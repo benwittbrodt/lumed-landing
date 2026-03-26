@@ -1,33 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lumed — Your Watch Companion</title>
-  <meta name="description" content="Track your collection, log daily wear, measure accuracy, and sync time precisely. Lumed is the watch companion app for enthusiasts." />
+  <meta name="description"
+    content="Track your collection, log daily wear, measure accuracy, and sync time precisely. Lumed is the watch companion app for enthusiasts." />
+  <link rel="icon" type="image/png" href="ios_icon.png" />
+  <link rel="apple-touch-icon" href="ios_icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg:           #070C16;
-      --bg-2:         #0D1525;
-      --card:         rgba(255,255,255,0.045);
-      --card-border:  rgba(255,255,255,0.09);
-      --accent:       #2F86FF;
-      --accent-glow:  rgba(47,134,255,0.35);
-      --accent-light: #5BA3FF;
-      --text:         #E8EDF7;
-      --text-2:       #8B9CB8;
-      --text-3:       #4C607A;
-      --moon:         #E0B846;
-      --radius:       16px;
-      --radius-sm:    10px;
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    html { scroll-behavior: smooth; }
+    :root {
+      --bg: #070C16;
+      --bg-2: #0D1525;
+      --card: rgba(255, 255, 255, 0.045);
+      --card-border: rgba(255, 255, 255, 0.09);
+      --accent: #2F86FF;
+      --accent-glow: rgba(47, 134, 255, 0.35);
+      --accent-light: #5BA3FF;
+      --text: #E8EDF7;
+      --text-2: #8B9CB8;
+      --text-3: #4C607A;
+      --moon: #E0B846;
+      --radius: 16px;
+      --radius-sm: 10px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
@@ -44,8 +56,8 @@
       position: fixed;
       inset: 0;
       background:
-        radial-gradient(ellipse 80% 60% at 20% -10%, rgba(47,134,255,0.12) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 40% at 80% 100%, rgba(47,134,255,0.08) 0%, transparent 60%);
+        radial-gradient(ellipse 80% 60% at 20% -10%, rgba(47, 134, 255, 0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 80% 100%, rgba(47, 134, 255, 0.08) 0%, transparent 60%);
       pointer-events: none;
       z-index: 0;
     }
@@ -53,14 +65,16 @@
     /* ── NAV ──────────────────────────────────────────────── */
     nav {
       position: fixed;
-      top: 0; left: 0; right: 0;
+      top: 0;
+      left: 0;
+      right: 0;
       z-index: 100;
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0 40px;
       height: 64px;
-      background: rgba(7,12,22,0.7);
+      background: rgba(7, 12, 22, 0.7);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--card-border);
@@ -77,25 +91,14 @@
       width: 32px;
       height: 32px;
       border-radius: 8px;
-      background: linear-gradient(160deg, #1A3168 0%, #0D1E47 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
       flex-shrink: 0;
-      position: relative;
       overflow: hidden;
     }
 
-    /* Moon inside icon */
-    .nav-logo-icon::before {
-      content: '';
-      position: absolute;
-      width: 11px;
-      height: 11px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 35% 35%, #F0CC6A, #D4A320);
-      top: 7px;
-      right: 7px;
+    .nav-logo-icon img {
+      width: 100%;
+      height: 100%;
+      display: block;
     }
 
     .nav-logo-wordmark {
@@ -111,19 +114,25 @@
       color: var(--accent-light);
       text-decoration: none;
       padding: 8px 18px;
-      border: 1px solid rgba(47,134,255,0.3);
+      border: 1px solid rgba(47, 134, 255, 0.3);
       border-radius: 20px;
       transition: background 0.2s, border-color 0.2s;
     }
+
     .nav-cta:hover {
-      background: rgba(47,134,255,0.12);
-      border-color: rgba(47,134,255,0.6);
+      background: rgba(47, 134, 255, 0.12);
+      border-color: rgba(47, 134, 255, 0.6);
     }
 
     /* ── LAYOUT ───────────────────────────────────────────── */
-    main { position: relative; z-index: 1; }
+    main {
+      position: relative;
+      z-index: 1;
+    }
 
-    section { padding: 80px 24px; }
+    section {
+      padding: 80px 24px;
+    }
 
     .container {
       max-width: 960px;
@@ -156,8 +165,8 @@
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--accent-light);
-      background: rgba(47,134,255,0.1);
-      border: 1px solid rgba(47,134,255,0.25);
+      background: rgba(47, 134, 255, 0.1);
+      border: 1px solid rgba(47, 134, 255, 0.25);
       padding: 5px 14px;
       border-radius: 20px;
       margin-bottom: 32px;
@@ -172,48 +181,32 @@
     }
 
     @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(0.8); }
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.5;
+        transform: scale(0.8);
+      }
     }
 
     .hero-app-icon {
       width: 96px;
       height: 96px;
       border-radius: 22px;
-      background: linear-gradient(160deg, #213F90 0%, #0D1E47 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
       margin: 0 auto 36px;
-      position: relative;
       overflow: hidden;
-      box-shadow: 0 0 0 1px rgba(255,255,255,0.1), 0 24px 48px rgba(0,0,0,0.5), 0 0 60px var(--accent-glow);
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1), 0 24px 48px rgba(0, 0, 0, 0.5), 0 0 60px var(--accent-glow);
     }
 
-    /* Clouds */
-    .hero-app-icon::after {
-      content: '';
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 70px;
-      height: 28px;
-      background: radial-gradient(ellipse 50% 100% at 30% 80%, rgba(200,200,200,0.55) 0%, transparent 70%),
-                  radial-gradient(ellipse 60% 100% at 70% 80%, rgba(170,170,170,0.45) 0%, transparent 70%);
-      border-radius: 50%;
-    }
-
-    /* Moon */
-    .hero-app-icon .moon {
-      position: absolute;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 35% 35%, #F5D878, #D4A320);
-      top: 14px;
-      right: 16px;
-      box-shadow: 0 2px 8px rgba(212,163,32,0.4);
+    .hero-app-icon img {
+      width: 100%;
+      height: 100%;
+      display: block;
     }
 
     .hero-h1 {
@@ -259,12 +252,16 @@
       transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
       box-shadow: 0 4px 20px var(--accent-glow);
     }
+
     .btn-primary:hover {
       background: #4A99FF;
       transform: translateY(-1px);
       box-shadow: 0 8px 28px var(--accent-glow);
     }
-    .btn-primary:active { transform: translateY(0); }
+
+    .btn-primary:active {
+      transform: translateY(0);
+    }
 
     .btn-secondary {
       display: inline-flex;
@@ -278,7 +275,10 @@
       text-decoration: none;
       transition: color 0.2s;
     }
-    .btn-secondary:hover { color: var(--text); }
+
+    .btn-secondary:hover {
+      color: var(--text);
+    }
 
     .hero-platforms {
       margin-top: 64px;
@@ -290,6 +290,7 @@
       align-items: center;
       gap: 10px;
     }
+
     .hero-platforms::before,
     .hero-platforms::after {
       content: '';
@@ -300,7 +301,9 @@
     }
 
     /* ── FEATURES GRID ────────────────────────────────────── */
-    .features-section { padding-top: 0; }
+    .features-section {
+      padding-top: 0;
+    }
 
     .section-eyebrow {
       font-size: 12px;
@@ -340,9 +343,10 @@
       padding: 28px;
       transition: border-color 0.2s, background 0.2s, transform 0.2s;
     }
+
     .feature-card:hover {
-      border-color: rgba(47,134,255,0.3);
-      background: rgba(255,255,255,0.07);
+      border-color: rgba(47, 134, 255, 0.3);
+      background: rgba(255, 255, 255, 0.07);
       transform: translateY(-2px);
     }
 
@@ -376,18 +380,39 @@
     }
 
     /* icon tints */
-    .tint-blue   { background: rgba(47,134,255,0.15); color: #5BA3FF; }
-    .tint-green  { background: rgba(52,199,89,0.15);  color: #34C759; }
-    .tint-orange { background: rgba(255,159,10,0.15); color: #FF9F0A; }
-    .tint-purple { background: rgba(175,82,222,0.15); color: #AF52DE; }
-    .tint-teal   { background: rgba(90,200,250,0.15); color: #5AC8FA; }
+    .tint-blue {
+      background: rgba(47, 134, 255, 0.15);
+      color: #5BA3FF;
+    }
+
+    .tint-green {
+      background: rgba(52, 199, 89, 0.15);
+      color: #34C759;
+    }
+
+    .tint-orange {
+      background: rgba(255, 159, 10, 0.15);
+      color: #FF9F0A;
+    }
+
+    .tint-purple {
+      background: rgba(175, 82, 222, 0.15);
+      color: #AF52DE;
+    }
+
+    .tint-teal {
+      background: rgba(90, 200, 250, 0.15);
+      color: #5AC8FA;
+    }
 
     /* ── ACCURACY HIGHLIGHT ───────────────────────────────── */
-    .highlight-section { padding-top: 0; }
+    .highlight-section {
+      padding-top: 0;
+    }
 
     .highlight-card {
-      background: linear-gradient(135deg, rgba(47,134,255,0.08) 0%, rgba(13,29,71,0.4) 100%);
-      border: 1px solid rgba(47,134,255,0.2);
+      background: linear-gradient(135deg, rgba(47, 134, 255, 0.08) 0%, rgba(13, 29, 71, 0.4) 100%);
+      border: 1px solid rgba(47, 134, 255, 0.2);
       border-radius: 24px;
       padding: 56px 48px;
       display: flex;
@@ -395,9 +420,13 @@
       gap: 56px;
     }
 
-    .highlight-text { flex: 1; }
+    .highlight-text {
+      flex: 1;
+    }
 
-    .highlight-text .section-eyebrow { margin-bottom: 12px; }
+    .highlight-text .section-eyebrow {
+      margin-bottom: 12px;
+    }
 
     .highlight-text h2 {
       font-size: clamp(24px, 3.5vw, 36px);
@@ -429,10 +458,10 @@
       width: 160px;
       height: 160px;
       border-radius: 50%;
-      border: 2px solid rgba(47,134,255,0.4);
-      background: rgba(7,12,22,0.8);
+      border: 2px solid rgba(47, 134, 255, 0.4);
+      background: rgba(7, 12, 22, 0.8);
       position: relative;
-      box-shadow: 0 0 40px rgba(47,134,255,0.2), inset 0 0 30px rgba(0,0,0,0.5);
+      box-shadow: 0 0 40px rgba(47, 134, 255, 0.2), inset 0 0 30px rgba(0, 0, 0, 0.5);
     }
 
     .clock-face::before {
@@ -440,7 +469,7 @@
       position: absolute;
       inset: 8px;
       border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.06);
+      border: 1px solid rgba(255, 255, 255, 0.06);
     }
 
     /* Hour markers */
@@ -448,7 +477,7 @@
       position: absolute;
       width: 2px;
       height: 10px;
-      background: rgba(255,255,255,0.3);
+      background: rgba(255, 255, 255, 0.3);
       left: 50%;
       top: 10px;
       transform-origin: 50% 70px;
@@ -458,7 +487,7 @@
     .clock-marker.major {
       height: 14px;
       width: 2.5px;
-      background: rgba(255,255,255,0.6);
+      background: rgba(255, 255, 255, 0.6);
       top: 8px;
     }
 
@@ -506,12 +535,28 @@
       z-index: 10;
     }
 
-    @keyframes rotateHour { to { transform: rotate(360deg); } }
-    @keyframes rotateMin  { to { transform: rotate(360deg); } }
-    @keyframes rotateSec  { to { transform: rotate(360deg); } }
+    @keyframes rotateHour {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes rotateMin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes rotateSec {
+      to {
+        transform: rotate(360deg);
+      }
+    }
 
     /* ── BETA CTA ─────────────────────────────────────────── */
-    .beta-section { text-align: center; }
+    .beta-section {
+      text-align: center;
+    }
 
     .beta-card {
       background: var(--card);
@@ -527,13 +572,6 @@
       height: 72px;
       border-radius: 18px;
       margin-bottom: 28px;
-    }
-
-    .beta-card .hero-app-icon .moon {
-      width: 22px;
-      height: 22px;
-      top: 10px;
-      right: 11px;
     }
 
     .beta-card h2 {
@@ -557,6 +595,86 @@
       margin-top: 20px;
       font-size: 13px;
       color: var(--text-3);
+    }
+
+    /* ── EMAIL FORM ──────────────────────────────────────── */
+    .email-form {
+      display: flex;
+      gap: 10px;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .email-form input[type="email"] {
+      flex: 1;
+      min-width: 0;
+      font-family: inherit;
+      font-size: 15px;
+      padding: 14px 18px;
+      border-radius: 14px;
+      border: 1px solid var(--card-border);
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .email-form input[type="email"]::placeholder {
+      color: var(--text-3);
+    }
+
+    .email-form input[type="email"]:focus {
+      border-color: rgba(47, 134, 255, 0.5);
+      background: rgba(255, 255, 255, 0.09);
+    }
+
+    .email-form button {
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 600;
+      color: #fff;
+      background: var(--accent);
+      border: none;
+      padding: 14px 24px;
+      border-radius: 14px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px var(--accent-glow);
+    }
+
+    .email-form button:hover {
+      background: #4A99FF;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 28px var(--accent-glow);
+    }
+
+    .email-form button:active {
+      transform: translateY(0);
+    }
+
+    .email-form button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .email-form-success {
+      font-size: 15px;
+      color: #34C759;
+      font-weight: 500;
+    }
+
+    .email-form-error {
+      margin-top: 10px;
+      font-size: 13px;
+      color: #FF453A;
+    }
+
+    @media (max-width: 700px) {
+      .email-form {
+        flex-direction: column;
+      }
     }
 
     /* ── FOOTER ───────────────────────────────────────────── */
@@ -586,25 +704,20 @@
       width: 22px;
       height: 22px;
       border-radius: 5px;
-      background: linear-gradient(160deg, #213F90 0%, #0D1E47 100%);
-      position: relative;
       overflow: hidden;
     }
 
-    footer .footer-logo-icon::before {
-      content: '';
-      position: absolute;
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 35% 35%, #F0CC6A, #D4A320);
-      top: 4px;
-      right: 4px;
+    footer .footer-logo-icon img {
+      width: 100%;
+      height: 100%;
+      display: block;
     }
 
     /* ── RESPONSIVE ───────────────────────────────────────── */
     @media (max-width: 700px) {
-      nav { padding: 0 20px; }
+      nav {
+        padding: 0 20px;
+      }
 
       .highlight-card {
         flex-direction: column;
@@ -613,30 +726,60 @@
         text-align: center;
       }
 
-      .highlight-text p { max-width: 100%; }
-      .highlight-visual { width: 140px; height: 140px; }
-      .clock-face { width: 120px; height: 120px; }
-      .clock-marker { transform-origin: 50% 53px; }
-      .clock-marker.major { transform-origin: 50% 53px; }
-      .hand-hour { height: 34px; }
-      .hand-min  { height: 44px; }
-      .hand-sec  { height: 48px; }
+      .highlight-text p {
+        max-width: 100%;
+      }
 
-      .beta-card { padding: 44px 24px; }
+      .highlight-visual {
+        width: 140px;
+        height: 140px;
+      }
 
-      section { padding: 60px 20px; }
+      .clock-face {
+        width: 120px;
+        height: 120px;
+      }
+
+      .clock-marker {
+        transform-origin: 50% 53px;
+      }
+
+      .clock-marker.major {
+        transform-origin: 50% 53px;
+      }
+
+      .hand-hour {
+        height: 34px;
+      }
+
+      .hand-min {
+        height: 44px;
+      }
+
+      .hand-sec {
+        height: 48px;
+      }
+
+      .beta-card {
+        padding: 44px 24px;
+      }
+
+      section {
+        padding: 60px 20px;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <!-- NAV -->
   <nav>
     <a class="nav-logo" href="#">
-      <div class="nav-logo-icon"></div>
+      <div class="nav-logo-icon"><img src="lumed_icon_2.svg" alt="Lumed icon" /></div>
       <span class="nav-logo-wordmark">Lumed</span>
     </a>
-    <a class="nav-cta" href="#beta">Join Beta</a>
+    <a class="nav-cta" href="#beta">Get Updates</a>
   </nav>
 
   <main>
@@ -650,22 +793,23 @@
         </div>
 
         <div class="hero-app-icon">
-          <div class="moon"></div>
+          <img src="ios_icon.png" alt="Lumed app icon" />
         </div>
 
-        <h1 class="hero-h1">Your watch,<br/>understood.</h1>
+        <h1 class="hero-h1">Your watch,<br />understood.</h1>
         <p class="hero-sub">
-          Lumed is a companion app for watch enthusiasts. Track your collection, log daily wear, measure accuracy, and sync time precisely — all in one place.
+          Lumed is a companion app for watch enthusiasts. Track your collection, log daily wear, measure accuracy, and
+          sync time precisely — all in one place.
         </p>
 
         <div class="hero-actions">
           <a class="btn-primary" href="#beta">
-            <!-- TestFlight icon -->
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z" fill="currentColor" opacity="0"/>
-              <path d="M17 12l-8 5V7l8 5z" fill="currentColor"/>
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                stroke="currentColor" stroke-width="1.8" fill="none" />
+              <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="1.8" fill="none" />
             </svg>
-            Get TestFlight Access
+            Sign Up for Updates
           </a>
           <a class="btn-secondary" href="#features">
             See features ↓
@@ -681,7 +825,8 @@
       <div class="container">
         <p class="section-eyebrow">What's inside</p>
         <h2 class="section-title">Everything a collector needs</h2>
-        <p class="section-sub">Five focused tools built around how watch enthusiasts actually think about their pieces.</p>
+        <p class="section-sub">Five focused tools built around how watch enthusiasts actually think about their pieces.
+        </p>
 
         <div class="features-grid">
 
@@ -689,73 +834,85 @@
           <div class="feature-card">
             <div class="feature-icon-wrap tint-blue">
               <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.8"/>
-                <circle cx="12" cy="12" r="2.5" fill="currentColor" opacity="0.3"/>
-                <line x1="12" y1="4.5" x2="12" y2="7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                <line x1="12" y1="17" x2="12" y2="19.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                <line x1="4.5" y1="12" x2="7" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                <line x1="17" y1="12" x2="19.5" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                <line x1="12" y1="12" x2="14.5" y2="9.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                <line x1="12" y1="12" x2="10.5" y2="14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.8" />
+                <circle cx="12" cy="12" r="2.5" fill="currentColor" opacity="0.3" />
+                <line x1="12" y1="4.5" x2="12" y2="7" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                <line x1="12" y1="17" x2="12" y2="19.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                <line x1="4.5" y1="12" x2="7" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                <line x1="17" y1="12" x2="19.5" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                <line x1="12" y1="12" x2="14.5" y2="9.5" stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" />
+                <line x1="12" y1="12" x2="10.5" y2="14" stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" />
               </svg>
             </div>
             <h3>Watch Box</h3>
-            <p>Your full collection in a clean grid. Add photos, reference numbers, case details, and notes. Sort by brand, most worn, or recently added. Favourites always float to the top.</p>
+            <p>Your full collection in a clean grid. Add photos, reference numbers, case details, and notes. Sort by
+              brand, most worn, or recently added. Favourites always float to the top.</p>
           </div>
 
           <!-- Wear Log -->
           <div class="feature-card">
             <div class="feature-icon-wrap tint-green">
               <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="3" y="4" width="18" height="17" rx="3" stroke="currentColor" stroke-width="1.8"/>
-                <line x1="3" y1="9" x2="21" y2="9" stroke="currentColor" stroke-width="1.8"/>
-                <line x1="8" y1="2" x2="8" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                <line x1="16" y1="2" x2="16" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                <path d="M8 14l2.5 2.5L16 13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <rect x="3" y="4" width="18" height="17" rx="3" stroke="currentColor" stroke-width="1.8" />
+                <line x1="3" y1="9" x2="21" y2="9" stroke="currentColor" stroke-width="1.8" />
+                <line x1="8" y1="2" x2="8" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                <line x1="16" y1="2" x2="16" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                <path d="M8 14l2.5 2.5L16 13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                  stroke-linejoin="round" />
               </svg>
             </div>
             <h3>Wear Log</h3>
-            <p>Record which watch you wore each day, with optional occasion tags and notes. Wear multiple watches in one day — Lumed tracks them all.</p>
+            <p>Record which watch you wore each day, with optional occasion tags and notes. Wear multiple watches in one
+              day — Lumed tracks them all.</p>
           </div>
 
           <!-- Stats -->
           <div class="feature-card">
             <div class="feature-icon-wrap tint-orange">
               <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="4" y="14" width="4" height="7" rx="1.5" fill="currentColor" opacity="0.4"/>
-                <rect x="10" y="9"  width="4" height="12" rx="1.5" fill="currentColor" opacity="0.6"/>
-                <rect x="16" y="4"  width="4" height="17" rx="1.5" fill="currentColor"/>
+                <rect x="4" y="14" width="4" height="7" rx="1.5" fill="currentColor" opacity="0.4" />
+                <rect x="10" y="9" width="4" height="12" rx="1.5" fill="currentColor" opacity="0.6" />
+                <rect x="16" y="4" width="4" height="17" rx="1.5" fill="currentColor" />
               </svg>
             </div>
             <h3>Stats</h3>
-            <p>See your collection at a glance — most worn pieces, neglected watches, and monthly activity across 30 days, 90 days, or all time. Know which watch needs a wrist day.</p>
+            <p>See your collection at a glance — most worn pieces, neglected watches, and monthly activity across 30
+              days, 90 days, or all time. Know which watch needs a wrist day.</p>
           </div>
 
           <!-- Time Sync -->
           <div class="feature-card">
             <div class="feature-icon-wrap tint-teal">
               <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/>
-                <path d="M12 7v5l3 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M18.5 5.5l1.5-1.5M5.5 18.5L4 20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                <circle cx="20" cy="4" r="2.5" fill="currentColor" opacity="0.5"/>
+                <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8" />
+                <path d="M12 7v5l3 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <path d="M18.5 5.5l1.5-1.5M5.5 18.5L4 20" stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" />
+                <circle cx="20" cy="4" r="2.5" fill="currentColor" opacity="0.5" />
               </svg>
             </div>
             <h3>Time Sync</h3>
-            <p>A live, NTP-synced clock accurate to the millisecond — so you can set your watch with precision. Add world time zones to check across cities at a glance.</p>
+            <p>A live, NTP-synced clock accurate to the millisecond — so you can set your watch with precision. Add
+              world time zones to check across cities at a glance.</p>
           </div>
 
           <!-- Accuracy -->
           <div class="feature-card">
             <div class="feature-icon-wrap tint-purple">
               <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 3C7.03 3 3 7.03 3 12s4.03 9 9 9 9-4.03 9-9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                <path d="M16 3.5l2 2-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                <circle cx="12" cy="12" r="2" fill="currentColor" opacity="0.4"/>
+                <path d="M12 3C7.03 3 3 7.03 3 12s4.03 9 9 9 9-4.03 9-9" stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" />
+                <path d="M16 3.5l2 2-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <circle cx="12" cy="12" r="2" fill="currentColor" opacity="0.4" />
               </svg>
             </div>
             <h3>Accuracy Tracking</h3>
-            <p>Photograph your watch face — Lumed reads the EXIF timestamp and compares it to NTP time to calculate daily drift in seconds. Track whether it's gaining or losing over time.</p>
+            <p>Photograph your watch face — Lumed reads the EXIF timestamp and compares it to NTP time to calculate
+              daily drift in seconds. Track whether it's gaining or losing over time.</p>
           </div>
 
         </div>
@@ -769,7 +926,9 @@
           <div class="highlight-text">
             <p class="section-eyebrow">Photo-based measurement</p>
             <h2>Know your drift, down to the second</h2>
-            <p>Point your camera at any watch face. Lumed extracts the time from the photo's EXIF metadata, compares it against an NTP reference, and plots your movement's daily rate over time. No external hardware required.</p>
+            <p>Point your camera at any watch face. Lumed extracts the time from the photo's EXIF metadata, compares it
+              against an NTP reference, and plots your movement's daily rate over time. No external hardware required.
+            </p>
           </div>
           <div class="highlight-visual">
             <div class="clock-face">
@@ -787,8 +946,8 @@
               <div class="clock-marker" style="transform: rotate(300deg)"></div>
               <div class="clock-marker" style="transform: rotate(330deg)"></div>
               <div class="hand hand-hour" id="handHour"></div>
-              <div class="hand hand-min"  id="handMin"></div>
-              <div class="hand hand-sec"  id="handSec"></div>
+              <div class="hand hand-min" id="handMin"></div>
+              <div class="hand hand-sec" id="handSec"></div>
               <div class="clock-center"></div>
             </div>
           </div>
@@ -801,17 +960,17 @@
       <div class="container">
         <div class="beta-card">
           <div class="hero-app-icon" style="margin-left:auto;margin-right:auto;">
-            <div class="moon"></div>
+            <img src="ios_icon.png" alt="Lumed app icon" />
           </div>
-          <h2>Join the beta</h2>
-          <p>Lumed is in active development. Help shape the app by joining the TestFlight beta — feedback from real enthusiasts makes all the difference.</p>
-          <a class="btn-primary" href="https://testflight.apple.com/join/YOURCODE" target="_blank" rel="noopener">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path d="M17 12l-8 5V7l8 5z"/>
-            </svg>
-            Open in TestFlight
-          </a>
-          <p class="beta-note">Requires iOS 17 or later · Free during beta</p>
+          <h2>Stay in the loop</h2>
+          <p>Lumed is in active development. Sign up to get notified when we launch and receive beta invites.</p>
+          <iframe name="formSink" style="display:none;"></iframe>
+          <form class="email-form" id="emailForm" method="GET" action="https://n8n.811mapleton.com/webhook-test/b80fa1ab-77ea-40e2-a47f-e25a18f79997" target="formSink">
+            <input type="email" name="email" placeholder="you@example.com" required />
+            <button type="submit">Subscribe</button>
+          </form>
+          <div id="emailFormMsg"></div>
+          <p class="beta-note">No spam, ever. Unsubscribe anytime.</p>
         </div>
       </div>
     </section>
@@ -820,7 +979,7 @@
 
   <footer>
     <a class="footer-logo" href="#">
-      <div class="footer-logo-icon"></div>
+      <div class="footer-logo-icon"><img src="lumed_icon_2.svg" alt="Lumed icon" /></div>
       Lumed
     </a>
     <p>Built for watch people, by watch people.</p>
@@ -834,27 +993,44 @@
       const m = now.getMinutes() + s / 60;
       const h = (now.getHours() % 12) + m / 60;
 
-      const secDeg  = s * 6;
-      const minDeg  = m * 6;
+      const secDeg = s * 6;
+      const minDeg = m * 6;
       const hourDeg = h * 30;
 
       // The CSS animation starts from 0deg, so we set the initial offset
       // via animation-delay (negative = jump forward in time)
-      const secEl  = document.getElementById('handSec');
-      const minEl  = document.getElementById('handMin');
+      const secEl = document.getElementById('handSec');
+      const minEl = document.getElementById('handMin');
       const hourEl = document.getElementById('handHour');
 
-      if (secEl)  secEl.style.animationDelay  = `-${s}s`;
-      if (minEl)  minEl.style.animationDelay  = `-${(m * 60)}s`;
+      if (secEl) secEl.style.animationDelay = `-${s}s`;
+      if (minEl) minEl.style.animationDelay = `-${(m * 60)}s`;
       if (hourEl) hourEl.style.animationDelay = `-${(h * 3600)}s`;
 
       // Set initial transform so the clock shows the correct time before
       // the animation kicks in (avoids a 0deg flash)
-      if (secEl)  secEl.style.transform  = `rotate(${secDeg}deg)`;
-      if (minEl)  minEl.style.transform  = `rotate(${minDeg}deg)`;
+      if (secEl) secEl.style.transform = `rotate(${secDeg}deg)`;
+      if (minEl) minEl.style.transform = `rotate(${minDeg}deg)`;
       if (hourEl) hourEl.style.transform = `rotate(${hourDeg}deg)`;
     })();
   </script>
 
+  <script>
+    // Email signup — show success after form submits into hidden iframe
+    document.getElementById('emailForm').addEventListener('submit', function () {
+      const form = this;
+      const btn = form.querySelector('button');
+      const msg = document.getElementById('emailFormMsg');
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+      // Give the form a moment to actually POST, then show success
+      setTimeout(function () {
+        form.style.display = 'none';
+        msg.innerHTML = '<p class="email-form-success">You\'re on the list! We\'ll be in touch.</p>';
+      }, 1000);
+    });
+  </script>
+
 </body>
+
 </html>
