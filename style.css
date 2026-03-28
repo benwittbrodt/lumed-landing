@@ -390,6 +390,11 @@ section {
     color: #5AC8FA;
 }
 
+.tint-red {
+    background: rgba(149, 38, 7, 0.15);
+    color: #fa5a5a;
+}
+
 /* ── ACCURACY HIGHLIGHT ───────────────────────────────── */
 .highlight-section {
     padding-top: 0;
@@ -505,7 +510,7 @@ section {
     height: 64px;
     margin-left: -0.75px;
     background: var(--accent);
-    animation: rotateSec 60s steps(60, end) infinite;
+    animation: rotateSec 60s steps(600, end) infinite;
 }
 
 .clock-center {
