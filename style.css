@@ -510,7 +510,7 @@ section {
     height: 64px;
     margin-left: -0.75px;
     background: var(--accent);
-    animation: rotateSec 60s steps(600, end) infinite;
+    animation: rotateSec 60s steps(400, end) infinite;
 }
 
 .clock-center {
@@ -700,7 +700,7 @@ section {
 }
 
 .drift-spec-badge.in-spec {
-    color: #34C759;
+    color: #34c759;
 }
 
 .drift-spec-badge.out-spec {
