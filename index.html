@@ -13,8 +13,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
-  <script defer src="https://analytics.811mapleton.com/script.js"
-    data-website-id="62f9f6af-6ff3-4386-992d-caa601763c4b"></script>
+  <script defer src="https://analytics.811mapleton.com/script.js" data-website-id="62f9f6af-6ff3-4386-992d-caa601763c4b"
+    data-domains="lumedapp.com">
+    </script>
 </head>
 
 <body>
@@ -35,7 +36,7 @@
       <div class="container">
         <div class="hero-badge">
           <span class="hero-badge-dot"></span>
-          Beta · iOS App
+          Limited Beta
         </div>
 
         <div class="hero-app-icon">
@@ -151,17 +152,17 @@
       </div>
     </section>
 
-    <!-- ACCURACY HIGHLIGHT -->
+    <!-- ACCURACY HIGHLIGHT (original) -->
     <section class="highlight-section">
       <div class="container">
         <div class="highlight-card">
           <div class="highlight-text">
-            <p class="section-eyebrow">Photo-based measurement</p>
-            <h2>Know your drift, down to the second</h2>
-            <p>Outside from a professional timegrapher the best way to track your watch's accuracy is real wear
-              checkpoints. Lumed does all the math and you just need to take a photo, verify the time, and see how well
-              your watch is running. Outputs are relative to your defined specification and Lumed also reminds you to
-              reset the baseline depending on the power reserve of your watch.
+
+            <p class="section-eyebrow">NTP-synced precision</p>
+            <h2>Atomic-accurate time on your wrist</h2>
+            <p>Lumed syncs directly with NIST time servers via NTP, giving you a reference clock accurate to the
+              millisecond. Set your watch to true atomic time — no guessing, no drift from your phone's clock.
+              Every measurement in Lumed is anchored to this source of truth.
             </p>
           </div>
           <div class="highlight-visual">
@@ -183,6 +184,59 @@
               <div class="hand hand-min" id="handMin"></div>
               <div class="hand hand-sec" id="handSec"></div>
               <div class="clock-center"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NIST TIME SYNC HIGHLIGHT -->
+    <section class="highlight-section">
+      <div class="container">
+        <div class="highlight-card highlight-card-reverse">
+          <div class="highlight-text">
+            <p class="section-eyebrow">Photo-based measurement</p>
+            <h2>Know your drift, down to the second</h2>
+            <p>Outside from a professional timegrapher the best way to track your watch's accuracy is real wear
+              checkpoints. Lumed does all the math and you just need to take a photo, verify the time, and see how well
+              your watch is running. Outputs are relative to your defined specification and Lumed also reminds you to
+              reset the baseline depending on the power reserve of your watch.
+            </p>
+
+          </div>
+          <div class="highlight-visual drift-card-wrap">
+            <div class="drift-card">
+              <div class="drift-hero-number">
+                <span class="drift-value">+1.4</span>
+                <span class="drift-unit">s/day</span>
+              </div>
+              <div class="drift-label">Average Drift Rate</div>
+
+              <div class="drift-divider"></div>
+
+              <div class="drift-gauge">
+                <div class="drift-gauge-track">
+                  <div class="drift-gauge-spec"></div>
+                  <div class="drift-gauge-center"></div>
+                  <div class="drift-gauge-limit drift-gauge-limit-loss"></div>
+                  <div class="drift-gauge-limit drift-gauge-limit-gain"></div>
+                  <div class="drift-gauge-marker"></div>
+                </div>
+                <div class="drift-gauge-labels">
+                  <span class="drift-gauge-lbl" style="left: 24%">&minus;4s</span>
+                  <span class="drift-gauge-lbl" style="left: 50%">0</span>
+                  <span class="drift-gauge-lbl" style="left: 84%">+6s</span>
+                </div>
+              </div>
+
+              <div class="drift-spec-badge in-spec">
+                <img src="icons/check-badge.svg" height="16px"></img>
+                <span>In Spec</span>
+              </div>
+              <div class="drift-spec-name">
+                <img src="icons/ribbon.svg" height="18px"></img>
+                <span>COSC Certified &nbsp;(&minus;4 / +6 s/day)</span>
+              </div>
             </div>
           </div>
         </div>
@@ -233,7 +287,6 @@
       const minEl = document.getElementById('handMin');
       const hourEl = document.getElementById('handHour');
 
-      // Negative delay jumps the CSS animation forward to the correct position
       if (secEl) secEl.style.animationDelay = `-${s}s`;
       if (minEl) minEl.style.animationDelay = `-${m * 60 + s}s`;
       if (hourEl) hourEl.style.animationDelay = `-${h * 3600 + m * 60 + s}s`;

@@ -443,6 +443,7 @@ section {
     justify-content: center;
 }
 
+
 /* Animated clock face */
 .clock-face {
     width: 160px;
@@ -462,7 +463,6 @@ section {
     border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-/* Hour markers */
 .clock-marker {
     position: absolute;
     width: 2px;
@@ -541,6 +541,217 @@ section {
     to {
         transform: rotate(360deg);
     }
+}
+
+/* Reversed highlight card (visual on left, text on right) */
+.highlight-card-reverse {
+    flex-direction: row-reverse;
+}
+
+/* ── DRIFT RESULT CARD ───────────────────────────────── */
+.drift-card-wrap {
+    width: 260px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.drift-card {
+    width: 100%;
+    background: rgba(15, 22, 40, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 24px 20px 18px;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.drift-hero-number {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+}
+
+.drift-value {
+    font-family: 'Inter', monospace;
+    font-size: 44px;
+    font-weight: 200;
+    letter-spacing: -0.03em;
+    color: #34C759;
+    line-height: 1;
+}
+
+.drift-unit {
+    font-family: 'Inter', monospace;
+    font-size: 16px;
+    font-weight: 400;
+    color: #34C759;
+    opacity: 0.7;
+}
+
+.drift-label {
+    font-size: 12px;
+    color: var(--text-2);
+    margin-top: -4px;
+}
+
+.drift-divider {
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.08);
+    margin: 4px 0;
+}
+
+/* Gauge */
+.drift-gauge {
+    width: 100%;
+    padding: 4px 0;
+}
+
+.drift-gauge-track {
+    position: relative;
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+    overflow: visible;
+}
+
+/* COSC: -4/+6, gauge maps loss at ~18%, gain at ~74% */
+.drift-gauge-spec {
+    position: absolute;
+    left: 24%;
+    width: 60%;
+    height: 100%;
+    background: rgba(52, 199, 89, 0.25);
+    border-radius: 4px;
+}
+
+.drift-gauge-center {
+    position: absolute;
+    left: 50%;
+    top: -2px;
+    width: 1.5px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(-50%);
+}
+
+.drift-gauge-limit {
+    position: absolute;
+    top: -3px;
+    width: 1.5px;
+    height: 14px;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.drift-gauge-limit-loss {
+    left: 24%;
+    transform: translateX(-50%);
+}
+
+.drift-gauge-limit-gain {
+    left: 84%;
+    transform: translateX(-50%);
+}
+
+/* +1.4 on a -4/+6 scale → 50% + (1.4/6)*24% ≈ 55.6% */
+.drift-gauge-marker {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #34C759;
+    top: 50%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 1px 4px rgba(52, 199, 89, 0.45);
+}
+
+.drift-gauge-labels {
+    position: relative;
+    width: 100%;
+    height: 18px;
+    margin-top: 4px;
+}
+
+.drift-gauge-lbl {
+    position: absolute;
+    transform: translateX(-50%);
+    font-family: 'Inter', monospace;
+    font-size: 10px;
+    color: var(--text-2);
+    letter-spacing: 0.02em;
+}
+
+/* Spec badge */
+.drift-spec-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.drift-spec-badge.in-spec {
+    color: #34C759;
+}
+
+.drift-spec-badge.out-spec {
+    color: #FF453A;
+}
+
+.drift-spec-name {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    color: var(--text-2);
+    margin-top: -4px;
+}
+
+/* Time detail */
+.drift-times {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.drift-time-col {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.drift-time-label {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--text-3);
+}
+
+.drift-time-value {
+    font-family: 'Inter', monospace;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    letter-spacing: -0.01em;
+}
+
+/* Method badge */
+.drift-method {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    color: var(--text-3);
+    margin-top: 2px;
 }
 
 /* ── BETA CTA ─────────────────────────────────────────── */
@@ -725,6 +936,11 @@ footer .footer-logo-icon img {
         height: 140px;
     }
 
+    .highlight-visual.drift-card-wrap {
+        width: 240px;
+        height: auto;
+    }
+
     .clock-face {
         width: 120px;
         height: 120px;
@@ -748,6 +964,18 @@ footer .footer-logo-icon img {
 
     .hand-sec {
         height: 48px;
+    }
+
+    .highlight-card-reverse {
+        flex-direction: column;
+    }
+
+    .drift-card-wrap {
+        width: 240px;
+    }
+
+    .drift-value {
+        font-size: 36px;
     }
 
     .beta-card {
