@@ -260,7 +260,7 @@
       pointer-events: none;
     }
 
-    .cb-toggle input:checked + .cb-toggle-track {
+    .cb-toggle input:checked+.cb-toggle-track {
       background: var(--moon);
     }
 
@@ -277,7 +277,7 @@
       pointer-events: none;
     }
 
-    .cb-toggle input:checked ~ .cb-toggle-thumb {
+    .cb-toggle input:checked~.cb-toggle-thumb {
       transform: translateX(16px);
     }
 
@@ -590,14 +590,31 @@
 
     /* ── ANIMATIONS ──────────────────────────────────────── */
     @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      25%       { transform: translateX(-6px); }
-      75%       { transform: translateX(6px); }
+
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+
+      25% {
+        transform: translateX(-6px);
+      }
+
+      75% {
+        transform: translateX(6px);
+      }
     }
 
     @keyframes fadeSlideIn {
-      from { opacity: 0; transform: translateY(8px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .cb-watch-card {
@@ -652,8 +669,8 @@
       <div class="container">
         <p class="section-eyebrow">Web Import Tool</p>
         <h1>Build your collection,<br />then import it.</h1>
-        <p class="hero-sub">Add your watches here on the web — photos included. Export a <code>.lumedbackup</code> file
-          and restore it in Lumed on your iPhone. Your whole collection, ready to go.</p>
+        <p class="hero-sub">Add your watches here on the web with photos. Export a <code>.lumedbackup</code> file
+          and restore it in Lumed on your iPhone.</p>
         <div class="cb-steps">
           <div class="cb-step">
             <div class="cb-step-num">1</div>
@@ -707,8 +724,7 @@
 
               <div class="cb-field">
                 <label class="cb-label" for="fMovement">Movement Type</label>
-                <input class="cb-input" id="fMovement" placeholder="Automatic" list="movementList"
-                  autocomplete="off" />
+                <input class="cb-input" id="fMovement" placeholder="Automatic" list="movementList" autocomplete="off" />
                 <datalist id="movementList">
                   <option value="Automatic">
                   <option value="Manual Wind">
@@ -747,8 +763,7 @@
 
               <div class="cb-field">
                 <label class="cb-label" for="fCase">Case Material</label>
-                <input class="cb-input" id="fCase" placeholder="Stainless Steel" list="caseList"
-                  autocomplete="off" />
+                <input class="cb-input" id="fCase" placeholder="Stainless Steel" list="caseList" autocomplete="off" />
                 <datalist id="caseList">
                   <option value="Stainless Steel">
                   <option value="Yellow Gold">
@@ -853,8 +868,8 @@
               <label class="cb-favorite-row">
                 <span class="cb-favorite-label">
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/>
-                    <path d="M12 7v5l3 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                    <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8" />
+                    <path d="M12 7v5l3 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
                   </svg>
                   Track Accuracy
                 </span>
@@ -1059,15 +1074,15 @@
 
     // ── PRESET DATA & HANDLER ─────────────────────────────────
     const PRESETS = {
-      'cosc':              { loss: 4,  gain: 6,  locked: true,  power: null },
-      'metas':             { loss: 0,  gain: 5,  locked: true,  power: null },
-      'rolex-superlative': { loss: 2,  gain: 2,  locked: true,  power: 70   },
-      'sellita-sw200':     { loss: 12, gain: 30, locked: false, power: 38   },
-      'eta-2892':          { loss: 7,  gain: 13, locked: false, power: 42   },
-      'miyota-9015':       { loss: 10, gain: 30, locked: false, power: 42   },
-      'miyota-8215':       { loss: 20, gain: 40, locked: false, power: 42   },
-      'seiko-4r36':        { loss: 15, gain: 25, locked: false, power: 41   },
-      'seiko-6r35':        { loss: 10, gain: 15, locked: false, power: 72   },
+      'cosc': { loss: 4, gain: 6, locked: true, power: null },
+      'metas': { loss: 0, gain: 5, locked: true, power: null },
+      'rolex-superlative': { loss: 2, gain: 2, locked: true, power: 70 },
+      'sellita-sw200': { loss: 12, gain: 30, locked: false, power: 38 },
+      'eta-2892': { loss: 7, gain: 13, locked: false, power: 42 },
+      'miyota-9015': { loss: 10, gain: 30, locked: false, power: 42 },
+      'miyota-8215': { loss: 20, gain: 40, locked: false, power: 42 },
+      'seiko-4r36': { loss: 15, gain: 25, locked: false, power: 41 },
+      'seiko-6r35': { loss: 10, gain: 15, locked: false, power: 72 },
     };
 
     document.getElementById('fSpecPreset').addEventListener('change', e => {
