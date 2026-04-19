@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Collection Builder — Lumed</title>
+  <meta name="description" content="Add your watch collection on the web and import it into Lumed for iPhone." />
+  <link rel="icon" type="image/png" href="ios_icon.png" />
+  <link rel="apple-touch-icon" href="ios_icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── PAGE HERO ───────────────────────────────────────── */
+    .cb-hero {
+      padding-top: 120px;
+      padding-bottom: 48px;
+    }
+
+    .cb-hero h1 {
+      font-size: clamp(32px, 5vw, 54px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #FFFFFF 30%, #8BAEE0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .cb-hero .hero-sub {
+      margin-bottom: 36px;
+      max-width: 580px;
+    }
+
+    /* 3-step row */
+    .cb-steps {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .cb-step {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 10px 16px;
+    }
+
+    .cb-step-num {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(47, 134, 255, 0.15);
+      color: var(--accent-light);
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .cb-step-text {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-2);
+      white-space: nowrap;
+    }
+
+    .cb-step-arrow {
+      color: var(--text-3);
+      font-size: 16px;
+    }
+
+    /* ── BUILDER LAYOUT ──────────────────────────────────── */
+    .cb-section {
+      padding-top: 0;
+      padding-bottom: 80px;
+    }
+
+    .cb-layout {
+      display: grid;
+      grid-template-columns: 460px 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    /* ── FORM PANEL ──────────────────────────────────────── */
+    .cb-panel {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 28px;
+    }
+
+    .cb-panel-title {
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .cb-count {
+      font-size: 12px;
+      font-weight: 600;
+      background: rgba(47, 134, 255, 0.15);
+      color: var(--accent-light);
+      padding: 2px 8px;
+      border-radius: 10px;
+    }
+
+    /* ── FORM FIELDS ─────────────────────────────────────── */
+    .cb-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .cb-form-full {
+      grid-column: 1 / -1;
+    }
+
+    .cb-field {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .cb-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+
+    .cb-label .req {
+      color: var(--accent-light);
+      margin-left: 2px;
+    }
+
+    .cb-input,
+    .cb-textarea {
+      font-family: inherit;
+      font-size: 14px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid var(--card-border);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      width: 100%;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .cb-input::placeholder,
+    .cb-textarea::placeholder {
+      color: var(--text-3);
+    }
+
+    .cb-input:focus,
+    .cb-textarea:focus {
+      border-color: rgba(47, 134, 255, 0.5);
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .cb-input.error {
+      border-color: rgba(255, 69, 58, 0.6);
+      animation: shake 0.3s ease;
+    }
+
+    .cb-select {
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234C607A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      padding-right: 32px;
+    }
+
+    .cb-select option,
+    .cb-select optgroup {
+      background: #0D1525;
+      color: var(--text);
+    }
+
+    .cb-input:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+
+    .cb-textarea {
+      resize: vertical;
+      min-height: 72px;
+      line-height: 1.5;
+    }
+
+    .cb-form-divider {
+      height: 1px;
+      background: var(--card-border);
+      margin: 2px 0;
+      grid-column: 1 / -1;
+    }
+
+    /* ── FAVORITE TOGGLE ─────────────────────────────────── */
+    .cb-favorite-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 12px;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 10px;
+      border: 1px solid var(--card-border);
+      cursor: pointer;
+      grid-column: 1 / -1;
+      user-select: none;
+    }
+
+    .cb-favorite-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-2);
+    }
+
+    .cb-toggle {
+      position: relative;
+      width: 36px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+
+    .cb-toggle input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+      position: absolute;
+    }
+
+    .cb-toggle-track {
+      position: absolute;
+      inset: 0;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.12);
+      transition: background 0.2s;
+      pointer-events: none;
+    }
+
+    .cb-toggle input:checked + .cb-toggle-track {
+      background: var(--moon);
+    }
+
+    .cb-toggle-thumb {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: white;
+      top: 2px;
+      left: 2px;
+      transition: transform 0.2s;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+      pointer-events: none;
+    }
+
+    .cb-toggle input:checked ~ .cb-toggle-thumb {
+      transform: translateX(16px);
+    }
+
+    /* ── PHOTO UPLOAD ────────────────────────────────────── */
+    .cb-photo-zone {
+      border: 1.5px dashed var(--card-border);
+      border-radius: 12px;
+      padding: 18px;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      grid-column: 1 / -1;
+    }
+
+    .cb-photo-zone:hover,
+    .cb-photo-zone.dragover {
+      border-color: rgba(47, 134, 255, 0.45);
+      background: rgba(47, 134, 255, 0.04);
+    }
+
+    .cb-photo-zone-text {
+      font-size: 13px;
+      color: var(--text-3);
+      line-height: 1.6;
+      pointer-events: none;
+    }
+
+    .cb-photo-zone-text strong {
+      color: var(--accent-light);
+    }
+
+    .cb-photo-thumbs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+      justify-content: center;
+    }
+
+    .cb-thumb {
+      position: relative;
+      width: 60px;
+      height: 60px;
+      flex-shrink: 0;
+    }
+
+    .cb-thumb img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 8px;
+      display: block;
+    }
+
+    .cb-thumb-remove {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      background: #FF453A;
+      color: white;
+      font-size: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: none;
+      font-weight: 700;
+      padding: 0;
+      z-index: 2;
+      line-height: 1;
+    }
+
+    /* ── ADD BUTTON ──────────────────────────────────────── */
+    .cb-add-btn {
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 600;
+      color: #fff;
+      background: var(--accent);
+      border: none;
+      padding: 13px 24px;
+      border-radius: 12px;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 4px;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 16px var(--accent-glow);
+      grid-column: 1 / -1;
+    }
+
+    .cb-add-btn:hover {
+      background: #4A99FF;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px var(--accent-glow);
+    }
+
+    .cb-add-btn:active {
+      transform: translateY(0);
+    }
+
+    /* ── COLLECTION COLUMN ───────────────────────────────── */
+    .cb-collection-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .cb-export-btn {
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      background: var(--accent);
+      border: none;
+      padding: 10px 18px;
+      border-radius: 12px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s, opacity 0.2s;
+      box-shadow: 0 4px 16px var(--accent-glow);
+    }
+
+    .cb-export-btn:hover:not(:disabled) {
+      background: #4A99FF;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px var(--accent-glow);
+    }
+
+    .cb-export-btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+      box-shadow: none;
+      transform: none;
+    }
+
+    /* ── WATCH LIST ──────────────────────────────────────── */
+    .cb-watch-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .cb-empty {
+      text-align: center;
+      padding: 52px 24px;
+      color: var(--text-3);
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+    }
+
+    .cb-empty svg {
+      display: block;
+      margin: 0 auto 14px;
+      opacity: 0.35;
+    }
+
+    .cb-empty p {
+      font-size: 14px;
+      color: var(--text-3);
+      line-height: 1.6;
+    }
+
+    .cb-watch-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 14px;
+      transition: border-color 0.2s;
+    }
+
+    .cb-watch-card:hover {
+      border-color: rgba(47, 134, 255, 0.2);
+    }
+
+    .cb-watch-photo {
+      width: 56px;
+      height: 56px;
+      border-radius: 10px;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: rgba(255, 255, 255, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-3);
+    }
+
+    .cb-watch-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .cb-watch-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .cb-watch-name-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .cb-watch-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .cb-watch-fav {
+      color: var(--moon);
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+
+    .cb-watch-sub {
+      font-size: 12px;
+      color: var(--text-2);
+      margin-top: 3px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .cb-watch-photos-badge {
+      font-size: 11px;
+      color: var(--text-3);
+      margin-top: 3px;
+    }
+
+    .cb-watch-remove {
+      flex-shrink: 0;
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: rgba(255, 69, 58, 0.1);
+      color: #FF453A;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .cb-watch-remove:hover {
+      background: rgba(255, 69, 58, 0.22);
+    }
+
+    /* ── IMPORT HINT ─────────────────────────────────────── */
+    .cb-import-hint {
+      margin-top: 16px;
+      padding: 14px 18px;
+      background: rgba(47, 134, 255, 0.06);
+      border: 1px solid rgba(47, 134, 255, 0.15);
+      border-radius: 12px;
+      font-size: 13px;
+      color: var(--text-2);
+      line-height: 1.6;
+      display: none;
+    }
+
+    .cb-import-hint.visible {
+      display: block;
+    }
+
+    .cb-import-hint strong {
+      color: var(--text);
+    }
+
+    /* ── TOAST ───────────────────────────────────────────── */
+    .cb-toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: #1A2640;
+      border: 1px solid rgba(52, 199, 89, 0.3);
+      color: #34C759;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 11px 20px;
+      border-radius: 12px;
+      z-index: 200;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      pointer-events: none;
+      white-space: nowrap;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    .cb-toast.show {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* ── ANIMATIONS ──────────────────────────────────────── */
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25%       { transform: translateX(-6px); }
+      75%       { transform: translateX(6px); }
+    }
+
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .cb-watch-card {
+      animation: fadeSlideIn 0.2s ease forwards;
+    }
+
+    /* ── RESPONSIVE ──────────────────────────────────────── */
+    @media (max-width: 960px) {
+      .cb-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .cb-form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cb-form-full,
+      .cb-favorite-row,
+      .cb-photo-zone,
+      .cb-add-btn {
+        grid-column: 1;
+      }
+
+      .cb-step-arrow {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="index.html">
+      <div class="nav-logo-icon"><img src="lumed_icon_2.svg" alt="Lumed icon" /></div>
+      <span class="nav-logo-wordmark">Lumed</span>
+    </a>
+    <div class="nav-links">
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link nav-link-active" href="collection-builder.html">Collection Builder</a>
+    </div>
+    <a class="nav-cta" href="index.html#beta">Get Updates</a>
+  </nav>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="cb-hero">
+      <div class="container">
+        <p class="section-eyebrow">Web Import Tool</p>
+        <h1>Build your collection,<br />then import it.</h1>
+        <p class="hero-sub">Add your watches here on the web — photos included. Export a <code>.lumedbackup</code> file
+          and restore it in Lumed on your iPhone. Your whole collection, ready to go.</p>
+        <div class="cb-steps">
+          <div class="cb-step">
+            <div class="cb-step-num">1</div>
+            <div class="cb-step-text">Add your watches below</div>
+          </div>
+          <div class="cb-step-arrow">→</div>
+          <div class="cb-step">
+            <div class="cb-step-num">2</div>
+            <div class="cb-step-text">Export <code>.lumedbackup</code></div>
+          </div>
+          <div class="cb-step-arrow">→</div>
+          <div class="cb-step">
+            <div class="cb-step-num">3</div>
+            <div class="cb-step-text">Restore in Lumed on iPhone</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BUILDER -->
+    <section class="cb-section">
+      <div class="container cb-layout">
+
+        <!-- LEFT: FORM -->
+        <div>
+          <div class="cb-panel">
+            <h2 class="cb-panel-title">Add a Watch</h2>
+            <div class="cb-form-grid">
+
+              <div class="cb-field">
+                <label class="cb-label" for="fBrand">Brand <span class="req">*</span></label>
+                <input class="cb-input" id="fBrand" placeholder="Rolex, Seiko, Omega…" autocomplete="off" />
+              </div>
+
+              <div class="cb-field">
+                <label class="cb-label" for="fModel">Model <span class="req">*</span></label>
+                <input class="cb-input" id="fModel" placeholder="Submariner Date" autocomplete="off" />
+              </div>
+
+              <div class="cb-field">
+                <label class="cb-label" for="fRef">Reference Number</label>
+                <input class="cb-input" id="fRef" placeholder="126610LN" autocomplete="off" />
+              </div>
+
+              <div class="cb-field">
+                <label class="cb-label" for="fSerial">Serial Number</label>
+                <input class="cb-input" id="fSerial" placeholder="2024xxxxxx" autocomplete="off" />
+              </div>
+
+              <div class="cb-form-divider"></div>
+
+              <div class="cb-field">
+                <label class="cb-label" for="fMovement">Movement Type</label>
+                <input class="cb-input" id="fMovement" placeholder="Automatic" list="movementList"
+                  autocomplete="off" />
+                <datalist id="movementList">
+                  <option value="Automatic">
+                  <option value="Manual Wind">
+                  <option value="Quartz">
+                  <option value="Solar">
+                  <option value="Kinetic">
+                  <option value="Spring Drive">
+                  <option value="Meca-Quartz">
+                </datalist>
+              </div>
+
+              <div class="cb-field">
+                <label class="cb-label" for="fYear">Year</label>
+                <input class="cb-input" id="fYear" type="number" placeholder="2023" min="1800" max="2099"
+                  autocomplete="off" />
+              </div>
+
+              <div class="cb-field">
+                <label class="cb-label" for="fDial">Dial Color</label>
+                <input class="cb-input" id="fDial" placeholder="Black" list="dialList" autocomplete="off" />
+                <datalist id="dialList">
+                  <option value="Black">
+                  <option value="Blue">
+                  <option value="White">
+                  <option value="Silver">
+                  <option value="Grey">
+                  <option value="Green">
+                  <option value="Champagne">
+                  <option value="Cream">
+                  <option value="Brown">
+                  <option value="Red">
+                  <option value="Salmon">
+                  <option value="Meteorite">
+                </datalist>
+              </div>
+
+              <div class="cb-field">
+                <label class="cb-label" for="fCase">Case Material</label>
+                <input class="cb-input" id="fCase" placeholder="Stainless Steel" list="caseList"
+                  autocomplete="off" />
+                <datalist id="caseList">
+                  <option value="Stainless Steel">
+                  <option value="Yellow Gold">
+                  <option value="Rose Gold">
+                  <option value="White Gold">
+                  <option value="Platinum">
+                  <option value="Titanium">
+                  <option value="Ceramic">
+                  <option value="Bronze">
+                  <option value="Aluminium">
+                  <option value="Two-Tone">
+                </datalist>
+              </div>
+
+              <div class="cb-field">
+                <label class="cb-label" for="fSize">Case Size (mm)</label>
+                <input class="cb-input" id="fSize" type="number" placeholder="40.5" step="0.5" min="10" max="80"
+                  autocomplete="off" />
+              </div>
+
+              <div class="cb-field">
+                <label class="cb-label" for="fPrice">Purchase Price</label>
+                <input class="cb-input" id="fPrice" type="number" placeholder="8500" min="0" step="1"
+                  autocomplete="off" />
+              </div>
+
+              <div class="cb-field cb-form-full">
+                <label class="cb-label" for="fSource">Purchase Source</label>
+                <input class="cb-input" id="fSource" placeholder="Authorized Dealer, Grey Market, Auction…"
+                  list="sourceList" autocomplete="off" />
+                <datalist id="sourceList">
+                  <option value="Authorized Dealer">
+                  <option value="Grey Market">
+                  <option value="Auction">
+                  <option value="Private Sale">
+                  <option value="Pre-Owned Dealer">
+                  <option value="Gift">
+                  <option value="Inheritance">
+                </datalist>
+              </div>
+
+              <div class="cb-field cb-form-full">
+                <label class="cb-label" for="fNotes">Notes</label>
+                <textarea class="cb-textarea" id="fNotes"
+                  placeholder="Service history, modifications, sentimental notes…"></textarea>
+              </div>
+
+              <div class="cb-form-divider"></div>
+
+              <!-- Movement Spec Preset -->
+              <div class="cb-field cb-form-full">
+                <label class="cb-label" for="fSpecPreset">Accuracy Spec</label>
+                <select class="cb-input cb-select" id="fSpecPreset">
+                  <option value="">— None / set manually —</option>
+                  <optgroup label="Certifications">
+                    <option value="cosc">COSC (−4 / +6 s/day)</option>
+                    <option value="metas">METAS (0 / +5 s/day)</option>
+                    <option value="rolex-superlative">Rolex Superlative (±2 s/day)</option>
+                  </optgroup>
+                  <optgroup label="Movements">
+                    <option value="sellita-sw200">Sellita SW200 (−12 / +30 s/day)</option>
+                    <option value="eta-2892">ETA 2892 (−7 / +13 s/day)</option>
+                    <option value="miyota-9015">Miyota 9015 (−10 / +30 s/day)</option>
+                    <option value="miyota-8215">Miyota 8215 (−20 / +40 s/day)</option>
+                    <option value="seiko-4r36">Seiko 4R36 (−15 / +25 s/day)</option>
+                    <option value="seiko-6r35">Seiko 6R35 (−10 / +15 s/day)</option>
+                  </optgroup>
+                </select>
+              </div>
+
+              <!-- Loss / Gain limits -->
+              <div class="cb-field">
+                <label class="cb-label" for="fLossLimit">Loss Limit (s/day)</label>
+                <input class="cb-input" id="fLossLimit" type="number" placeholder="e.g. 4" min="0" step="0.5"
+                  autocomplete="off" />
+              </div>
+
+              <div class="cb-field">
+                <label class="cb-label" for="fGainLimit">Gain Limit (s/day)</label>
+                <input class="cb-input" id="fGainLimit" type="number" placeholder="e.g. 6" min="0" step="0.5"
+                  autocomplete="off" />
+              </div>
+
+              <!-- Power reserve -->
+              <div class="cb-field">
+                <label class="cb-label" for="fPowerReserve">Power Reserve (hours)</label>
+                <input class="cb-input" id="fPowerReserve" type="number" placeholder="e.g. 70" min="1" step="1"
+                  list="powerList" autocomplete="off" />
+                <datalist id="powerList">
+                  <option value="38">
+                  <option value="40">
+                  <option value="42">
+                  <option value="48">
+                  <option value="70">
+                  <option value="72">
+                  <option value="80">
+                  <option value="96">
+                </datalist>
+              </div>
+
+              <!-- Track accuracy toggle -->
+              <label class="cb-favorite-row">
+                <span class="cb-favorite-label">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/>
+                    <path d="M12 7v5l3 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                  </svg>
+                  Track Accuracy
+                </span>
+                <label class="cb-toggle" onclick="event.stopPropagation()">
+                  <input type="checkbox" id="fTrackAccuracy" checked />
+                  <div class="cb-toggle-track"></div>
+                  <div class="cb-toggle-thumb"></div>
+                </label>
+              </label>
+
+              <div class="cb-form-divider"></div>
+
+              <!-- Favorite toggle -->
+              <label class="cb-favorite-row">
+                <span class="cb-favorite-label">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                      stroke="#E0B846" stroke-width="1.8" stroke-linejoin="round" />
+                  </svg>
+                  Mark as Favorite
+                </span>
+                <label class="cb-toggle" onclick="event.stopPropagation()">
+                  <input type="checkbox" id="fFavorite" />
+                  <div class="cb-toggle-track"></div>
+                  <div class="cb-toggle-thumb"></div>
+                </label>
+              </label>
+
+              <!-- Photos -->
+              <div class="cb-form-full">
+                <div class="cb-label" style="margin-bottom:6px;">
+                  Photos
+                  <span
+                    style="color:var(--text-3);font-weight:400;text-transform:none;letter-spacing:0;font-size:11px;">(up
+                    to 10)</span>
+                </div>
+                <div class="cb-photo-zone" id="photoZone">
+                  <div class="cb-photo-zone-text" id="photoZoneText">
+                    <strong>Click to add photos</strong> or drag &amp; drop<br />
+                    JPEG or PNG · Max 10 images
+                  </div>
+                  <div class="cb-photo-thumbs" id="photoThumbs"></div>
+                </div>
+                <input type="file" id="photoInput" accept="image/jpeg,image/png,image/webp,image/heic" multiple
+                  style="display:none" />
+              </div>
+
+              <!-- Submit -->
+              <button class="cb-add-btn" id="addWatchBtn" type="button">+ Add to Collection</button>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: COLLECTION -->
+        <div>
+          <div class="cb-collection-header">
+            <h2 class="cb-panel-title">
+              Your Collection
+              <span class="cb-count" id="watchCount">0</span>
+            </h2>
+            <button class="cb-export-btn" id="exportBtn" disabled>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 3v13M7 11l5 5 5-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <path d="M3 19v1a2 2 0 002 2h14a2 2 0 002-2v-1" stroke="currentColor" stroke-width="2.2"
+                  stroke-linecap="round" />
+              </svg>
+              Export .lumedbackup
+            </button>
+          </div>
+
+          <div id="watchList"></div>
+
+          <div class="cb-import-hint" id="importHint">
+            <strong>How to import on iPhone:</strong> Open Lumed → Settings → Restore from Backup, then select the
+            downloaded <code>.lumedbackup</code> file.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <a class="footer-logo" href="index.html">
+      <div class="footer-logo-icon"><img src="lumed_icon_2.svg" alt="Lumed icon" /></div>
+      Lumed
+    </a>
+    <p>Built for watch people, by watch people.</p>
+  </footer>
+
+  <div class="cb-toast" id="toast"></div>
+
+  <script>
+    // ── STATE ─────────────────────────────────────────────────
+    let watches = [];
+    let currentPhotos = []; // { dataUrl, base64 }
+
+    // Restore persisted watches (metadata only — photos stay in memory)
+    try {
+      const saved = localStorage.getItem('lumed_cb_watches');
+      if (saved) watches = JSON.parse(saved);
+    } catch (_) { }
+
+    // ── UUID ──────────────────────────────────────────────────
+    function newUUID() {
+      if (typeof crypto !== 'undefined' && crypto.randomUUID) return crypto.randomUUID();
+      return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
+        const r = Math.random() * 16 | 0;
+        return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+      });
+    }
+
+    // ── PHOTO COMPRESSION ─────────────────────────────────────
+    function compressPhoto(file) {
+      return new Promise(resolve => {
+        const img = new Image();
+        const url = URL.createObjectURL(file);
+        img.onload = () => {
+          URL.revokeObjectURL(url);
+          const MAX = 1600;
+          let w = img.naturalWidth, h = img.naturalHeight;
+          if (w > MAX || h > MAX) {
+            if (w > h) { h = Math.round(h * MAX / w); w = MAX; }
+            else { w = Math.round(w * MAX / h); h = MAX; }
+          }
+          const canvas = document.createElement('canvas');
+          canvas.width = w; canvas.height = h;
+          canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+          canvas.toBlob(blob => {
+            const reader = new FileReader();
+            reader.onload = () => {
+              const dataUrl = reader.result;
+              const base64 = dataUrl.split(',')[1];
+              resolve({ dataUrl, base64 });
+            };
+            reader.readAsDataURL(blob);
+          }, 'image/jpeg', 0.82);
+        };
+        img.onerror = () => { URL.revokeObjectURL(url); resolve(null); };
+        img.src = url;
+      });
+    }
+
+    async function handlePhotoFiles(files) {
+      const slots = 10 - currentPhotos.length;
+      if (slots <= 0) return;
+      for (const file of Array.from(files).slice(0, slots)) {
+        if (!file.type.startsWith('image/')) continue;
+        const result = await compressPhoto(file);
+        if (result) currentPhotos.push(result);
+      }
+      renderThumbs();
+    }
+
+    function renderThumbs() {
+      const thumbs = document.getElementById('photoThumbs');
+      const zoneText = document.getElementById('photoZoneText');
+      thumbs.innerHTML = currentPhotos.map((p, i) => `
+        <div class="cb-thumb">
+          <img src="${p.dataUrl}" alt="Photo ${i + 1}" />
+          <button class="cb-thumb-remove" data-idx="${i}" type="button" title="Remove">✕</button>
+        </div>`).join('');
+      if (currentPhotos.length >= 10) {
+        zoneText.innerHTML = '<span style="color:var(--text-3)">10 photos added — maximum reached</span>';
+      } else if (currentPhotos.length > 0) {
+        zoneText.innerHTML = `<strong>Add more</strong> or drag &amp; drop &nbsp;·&nbsp; ${currentPhotos.length}/10`;
+      } else {
+        zoneText.innerHTML = '<strong>Click to add photos</strong> or drag &amp; drop<br/>JPEG or PNG · Max 10 images';
+      }
+    }
+
+    // Photo zone interactions
+    const photoZone = document.getElementById('photoZone');
+    const photoInput = document.getElementById('photoInput');
+
+    photoZone.addEventListener('click', e => {
+      if (e.target.closest('.cb-thumb-remove')) return;
+      if (currentPhotos.length >= 10) return;
+      photoInput.click();
+    });
+    photoInput.addEventListener('change', async e => {
+      await handlePhotoFiles(e.target.files);
+      e.target.value = '';
+    });
+    photoZone.addEventListener('dragover', e => { e.preventDefault(); photoZone.classList.add('dragover'); });
+    photoZone.addEventListener('dragleave', () => photoZone.classList.remove('dragover'));
+    photoZone.addEventListener('drop', async e => {
+      e.preventDefault();
+      photoZone.classList.remove('dragover');
+      await handlePhotoFiles(e.dataTransfer.files);
+    });
+    document.getElementById('photoThumbs').addEventListener('click', e => {
+      const btn = e.target.closest('.cb-thumb-remove');
+      if (!btn) return;
+      currentPhotos.splice(parseInt(btn.dataset.idx, 10), 1);
+      renderThumbs();
+    });
+
+    // ── PRESET DATA & HANDLER ─────────────────────────────────
+    const PRESETS = {
+      'cosc':              { loss: 4,  gain: 6,  locked: true,  power: null },
+      'metas':             { loss: 0,  gain: 5,  locked: true,  power: null },
+      'rolex-superlative': { loss: 2,  gain: 2,  locked: true,  power: 70   },
+      'sellita-sw200':     { loss: 12, gain: 30, locked: false, power: 38   },
+      'eta-2892':          { loss: 7,  gain: 13, locked: false, power: 42   },
+      'miyota-9015':       { loss: 10, gain: 30, locked: false, power: 42   },
+      'miyota-8215':       { loss: 20, gain: 40, locked: false, power: 42   },
+      'seiko-4r36':        { loss: 15, gain: 25, locked: false, power: 41   },
+      'seiko-6r35':        { loss: 10, gain: 15, locked: false, power: 72   },
+    };
+
+    document.getElementById('fSpecPreset').addEventListener('change', e => {
+      const p = PRESETS[e.target.value];
+      const lossEl = document.getElementById('fLossLimit');
+      const gainEl = document.getElementById('fGainLimit');
+      const powerEl = document.getElementById('fPowerReserve');
+      if (p) {
+        lossEl.value = p.loss;
+        gainEl.value = p.gain;
+        lossEl.disabled = p.locked;
+        gainEl.disabled = p.locked;
+        if (p.power && !powerEl.value) powerEl.value = p.power;
+      } else {
+        lossEl.disabled = false;
+        gainEl.disabled = false;
+      }
+    });
+
+    // ── ADD WATCH ─────────────────────────────────────────────
+    document.getElementById('addWatchBtn').addEventListener('click', addWatch);
+    document.querySelector('.cb-form-grid').addEventListener('keydown', e => {
+      if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA') { e.preventDefault(); addWatch(); }
+    });
+
+    function addWatch() {
+      const brand = document.getElementById('fBrand').value.trim();
+      const model = document.getElementById('fModel').value.trim();
+      let valid = true;
+      [['fBrand', brand], ['fModel', model]].forEach(([id, val]) => {
+        const el = document.getElementById(id);
+        if (!val) { el.classList.add('error'); valid = false; setTimeout(() => el.classList.remove('error'), 600); }
+        else el.classList.remove('error');
+      });
+      if (!valid) return;
+
+      const num = v => { const n = parseFloat(v); return isNaN(n) ? null : n; };
+      const int = v => { const n = parseInt(v, 10); return isNaN(n) ? null : n; };
+      const str = id => document.getElementById(id).value.trim();
+
+      watches.push({
+        id: newUUID(),
+        brand,
+        model,
+        referenceNumber: str('fRef'),
+        serialNumber: str('fSerial'),
+        caseSizeMM: num(str('fSize')),
+        movementType: str('fMovement'),
+        year: int(str('fYear')),
+        dialColor: str('fDial'),
+        caseMaterial: str('fCase'),
+        notes: str('fNotes'),
+        dateAdded: new Date().toISOString(),
+        purchasePrice: num(str('fPrice')),
+        purchaseSource: str('fSource'),
+        isActive: true,
+        isFavorite: document.getElementById('fFavorite').checked,
+        accuracySpecID: str('fSpecPreset') || null,
+        accuracyLossLimit: num(document.getElementById('fLossLimit').value),
+        accuracyGainLimit: num(document.getElementById('fGainLimit').value),
+        powerReserveHours: num(document.getElementById('fPowerReserve').value),
+        trackAccuracy: document.getElementById('fTrackAccuracy').checked,
+        photos: currentPhotos.map(p => p.base64),
+      });
+
+      saveWatches();
+      renderWatchList();
+      resetForm();
+      showToast(`${brand} ${model} added`);
+    }
+
+    function resetForm() {
+      ['fBrand', 'fModel', 'fRef', 'fSerial', 'fMovement', 'fDial', 'fCase', 'fSource', 'fNotes',
+        'fSize', 'fYear', 'fPrice', 'fLossLimit', 'fGainLimit', 'fPowerReserve'].forEach(id => document.getElementById(id).value = '');
+      document.getElementById('fSpecPreset').value = '';
+      document.getElementById('fLossLimit').disabled = false;
+      document.getElementById('fGainLimit').disabled = false;
+      document.getElementById('fFavorite').checked = false;
+      document.getElementById('fTrackAccuracy').checked = true;
+      currentPhotos = [];
+      renderThumbs();
+      document.getElementById('fBrand').focus();
+    }
+
+    // ── WATCH LIST ────────────────────────────────────────────
+    document.getElementById('watchList').addEventListener('click', e => {
+      const btn = e.target.closest('.cb-watch-remove');
+      if (!btn) return;
+      watches = watches.filter(w => w.id !== btn.dataset.id);
+      saveWatches();
+      renderWatchList();
+    });
+
+    function renderWatchList() {
+      const list = document.getElementById('watchList');
+      const count = document.getElementById('watchCount');
+      const exportBtn = document.getElementById('exportBtn');
+      const hint = document.getElementById('importHint');
+
+      count.textContent = watches.length;
+      exportBtn.disabled = watches.length === 0;
+      hint.classList.toggle('visible', watches.length > 0);
+
+      if (watches.length === 0) {
+        list.innerHTML = `<div class="cb-watch-list">
+          <div class="cb-empty">
+            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="3" y="6" width="18" height="15" rx="3" stroke="currentColor" stroke-width="1.4"/>
+              <path d="M8 6V5a4 4 0 018 0v1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <circle cx="12" cy="13.5" r="2.5" stroke="currentColor" stroke-width="1.4"/>
+            </svg>
+            <p>No watches yet.<br/>Add your first one with the form.</p>
+          </div>
+        </div>`;
+        return;
+      }
+
+      list.innerHTML = `<div class="cb-watch-list">${watches.map(w => {
+        const photo = w.photos.length > 0
+          ? `<img src="data:image/jpeg;base64,${w.photos[0]}" alt="${esc(w.brand)} ${esc(w.model)}" />`
+          : `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+               <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.4"/>
+               <path d="M3 7h18M5 7v12a2 2 0 002 2h10a2 2 0 002-2V7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+             </svg>`;
+        const sub = [w.referenceNumber ? `Ref. ${w.referenceNumber}` : '', w.movementType].filter(Boolean).join(' · ');
+        const photoBadge = w.photos.length > 0
+          ? `<div class="cb-watch-photos-badge">${w.photos.length} photo${w.photos.length !== 1 ? 's' : ''}</div>` : '';
+        return `<div class="cb-watch-card">
+          <div class="cb-watch-photo">${photo}</div>
+          <div class="cb-watch-info">
+            <div class="cb-watch-name-row">
+              <div class="cb-watch-name">${esc(w.brand)} ${esc(w.model)}</div>
+              ${w.isFavorite ? '<span class="cb-watch-fav">★</span>' : ''}
+            </div>
+            ${sub ? `<div class="cb-watch-sub">${esc(sub)}</div>` : ''}
+            ${photoBadge}
+          </div>
+          <button class="cb-watch-remove" data-id="${w.id}" title="Remove">
+            <svg width="11" height="11" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 1l10 10M11 1L1 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>`;
+      }).join('')}</div>`;
+    }
+
+    // ── EXPORT ────────────────────────────────────────────────
+    document.getElementById('exportBtn').addEventListener('click', () => {
+      if (!watches.length) return;
+      const now = new Date();
+      const bundle = {
+        exportDate: now.toISOString(),
+        appVersion: 'web-builder-1.0',
+        watches,
+        wearEntries: [],
+        timingMeasurements: [],
+      };
+      const blob = new Blob([JSON.stringify(bundle, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const p = n => String(n).padStart(2, '0');
+      const name = `LumedBackup_${now.getFullYear()}-${p(now.getMonth() + 1)}-${p(now.getDate())}_${p(now.getHours())}-${p(now.getMinutes())}-${p(now.getSeconds())}.lumedbackup`;
+      const a = Object.assign(document.createElement('a'), { href: url, download: name });
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast(`${watches.length} watch${watches.length !== 1 ? 'es' : ''} exported`);
+    });
+
+    // ── STORAGE ───────────────────────────────────────────────
+    function saveWatches() {
+      // Save metadata without photos first (always fits); then try with photos
+      try {
+        const slim = watches.map(w => ({ ...w, photos: [] }));
+        localStorage.setItem('lumed_cb_watches', JSON.stringify(slim));
+        // Attempt full save (may fail if photos are large)
+        localStorage.setItem('lumed_cb_watches', JSON.stringify(watches));
+      } catch (_) { /* storage full — metadata still saved */ }
+    }
+
+    // ── TOAST ─────────────────────────────────────────────────
+    let toastTimer;
+    function showToast(msg) {
+      const el = document.getElementById('toast');
+      el.textContent = msg;
+      el.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => el.classList.remove('show'), 2500);
+    }
+
+    // ── UTILS ─────────────────────────────────────────────────
+    function esc(s) {
+      return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    // ── INIT ──────────────────────────────────────────────────
+    renderWatchList();
+  </script>
+
+</body>
+
+</html>
