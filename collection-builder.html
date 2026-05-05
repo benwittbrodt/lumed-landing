@@ -720,6 +720,21 @@
                 <input class="cb-input" id="fSerial" placeholder="2024xxxxxx" autocomplete="off" />
               </div>
 
+              <div class="cb-field cb-form-full">
+                <label class="cb-label" for="fCategory">Watch Type / Category</label>
+                <select class="cb-input cb-select" id="fCategory">
+                  <option value="">— Select type —</option>
+                  <option value="Diver">Diver</option>
+                  <option value="GMT">GMT</option>
+                  <option value="Chronograph">Chronograph</option>
+                  <option value="Dress">Dress</option>
+                  <option value="Field">Field</option>
+                  <option value="Pilot">Pilot</option>
+                  <option value="Integrated Bracelet">Integrated Bracelet</option>
+                  <option value="Calendar">Calendar</option>
+                </select>
+              </div>
+
               <div class="cb-form-divider"></div>
 
               <div class="cb-field">
@@ -727,7 +742,7 @@
                 <input class="cb-input" id="fMovement" placeholder="Automatic" list="movementList" autocomplete="off" />
                 <datalist id="movementList">
                   <option value="Automatic">
-                  <option value="Manual Wind">
+                  <option value="Hand Wound">
                   <option value="Quartz">
                   <option value="Solar">
                   <option value="Kinetic">
@@ -785,9 +800,32 @@
               </div>
 
               <div class="cb-field">
+                <label class="cb-label" for="fLugWidth">Lug Width (mm)</label>
+                <input class="cb-input" id="fLugWidth" type="number" placeholder="20" step="0.5" min="1" max="50"
+                  autocomplete="off" />
+              </div>
+
+              <div class="cb-field">
+                <label class="cb-label" for="fLugToLug">Lug-to-Lug (mm)</label>
+                <input class="cb-input" id="fLugToLug" type="number" placeholder="47.5" step="0.5" min="1" max="100"
+                  autocomplete="off" />
+              </div>
+
+              <div class="cb-field">
                 <label class="cb-label" for="fPrice">Purchase Price</label>
                 <input class="cb-input" id="fPrice" type="number" placeholder="8500" min="0" step="1"
                   autocomplete="off" />
+              </div>
+
+              <div class="cb-field">
+                <label class="cb-label" for="fEstimatedValue">Estimated Value</label>
+                <input class="cb-input" id="fEstimatedValue" type="number" placeholder="9200" min="0" step="1"
+                  autocomplete="off" />
+              </div>
+
+              <div class="cb-field">
+                <label class="cb-label" for="fDateAcquired">Date Acquired</label>
+                <input class="cb-input" id="fDateAcquired" type="date" autocomplete="off" />
               </div>
 
               <div class="cb-field cb-form-full">
@@ -1133,14 +1171,19 @@
         model,
         referenceNumber: str('fRef'),
         serialNumber: str('fSerial'),
+        category: str('fCategory'),
         caseSizeMM: num(str('fSize')),
+        lugWidthMM: num(str('fLugWidth')),
+        lugToLugMM: num(str('fLugToLug')),
         movementType: str('fMovement'),
         year: int(str('fYear')),
         dialColor: str('fDial'),
         caseMaterial: str('fCase'),
         notes: str('fNotes'),
         dateAdded: new Date().toISOString(),
+        dateAcquired: str('fDateAcquired') || null,
         purchasePrice: num(str('fPrice')),
+        estimatedValue: num(str('fEstimatedValue')),
         purchaseSource: str('fSource'),
         isActive: true,
         isFavorite: document.getElementById('fFavorite').checked,
@@ -1160,8 +1203,10 @@
 
     function resetForm() {
       ['fBrand', 'fModel', 'fRef', 'fSerial', 'fMovement', 'fDial', 'fCase', 'fSource', 'fNotes',
-        'fSize', 'fYear', 'fPrice', 'fLossLimit', 'fGainLimit', 'fPowerReserve'].forEach(id => document.getElementById(id).value = '');
+        'fSize', 'fLugWidth', 'fLugToLug', 'fYear', 'fPrice', 'fEstimatedValue', 'fDateAcquired',
+        'fLossLimit', 'fGainLimit', 'fPowerReserve'].forEach(id => document.getElementById(id).value = '');
       document.getElementById('fSpecPreset').value = '';
+      document.getElementById('fCategory').value = '';
       document.getElementById('fLossLimit').disabled = false;
       document.getElementById('fGainLimit').disabled = false;
       document.getElementById('fFavorite').checked = false;
