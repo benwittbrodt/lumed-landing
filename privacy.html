@@ -11,6 +11,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0..1,-25..200"
+    rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <style>
     .privacy-wrap {
@@ -92,46 +95,55 @@
   <main>
     <div class="privacy-wrap">
       <h1>Privacy Policy</h1>
-      <p class="privacy-meta">Last updated: April 19, 2026</p>
+      <p class="privacy-meta">Last updated: June 1, 2026</p>
 
-      <p>Lumed is a watch collection management app for iOS. This policy explains what data Lumed collects, how it is used, and your rights as a user. The short version: <strong>Lumed collects no personal data and stores everything on your device.</strong></p>
+      <p>Lumed is a watch collection management app for iOS. This policy explains what data Lumed collects, how it is used, and your rights as a user. The short version: <strong>Lumed collects no personal data. Your collection is stored on your device and, if you are signed in to iCloud, synced privately to your own iCloud account.</strong></p>
 
       <hr class="privacy-divider" />
 
       <h2>1. Data We Collect</h2>
-      <p>Lumed collects <strong>no personal information</strong>. The app does not require an account, does not send data to any server we operate, and does not track you in any way.</p>
+      <p>Lumed collects <strong>no personal information</strong>. The app does not require an account with us, does not send data to any server we operate, and does not track you in any way.</p>
       <p>All data you enter into Lumed — watch details, wear log entries, accuracy measurements, photos, and settings — is stored <strong>locally on your device</strong> using Apple's SwiftData framework and a shared app group container accessible only by Lumed and its widget extension.</p>
 
-      <h2>2. Network Access</h2>
-      <p>Lumed connects to the internet for one purpose only:</p>
+      <h2>2. iCloud Sync</h2>
+      <p>If you are signed in to iCloud on your device, Lumed uses Apple's <strong>CloudKit</strong> framework to sync your collection to your own private iCloud database. This allows your data to stay consistent across your Apple devices and to be restored if you reinstall the app.</p>
       <ul>
-        <li><strong>NTP time synchronization</strong> — Lumed queries publicly available NIST time servers (e.g. <code>time.apple.com</code>, <code>time.nist.gov</code>) to display an accurate reference clock and calculate watch drift. No personal data is sent in these requests; they are standard, anonymous time-protocol queries.</li>
+        <li>Data syncs to <strong>your personal iCloud account</strong>, not to any server operated by us.</li>
+        <li>We have <strong>no access</strong> to data stored in your private CloudKit database — only you and Apple do.</li>
+        <li>Sync is handled entirely by Apple and is governed by the <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple Privacy Policy</a> and iCloud terms.</li>
+        <li>If you sign out of iCloud or disable iCloud for Lumed in iOS Settings, the app continues to work using on-device storage only.</li>
+      </ul>
+
+      <h2>3. Network Access</h2>
+      <p>Beyond iCloud sync, Lumed connects to the internet for one purpose:</p>
+      <ul>
+        <li><strong>NTP time synchronization</strong> — Lumed queries publicly available time servers (e.g. <code>time.apple.com</code>, <code>time.nist.gov</code>) to display an accurate reference clock and calculate watch drift. No personal data is sent in these requests; they are standard, anonymous time-protocol queries.</li>
       </ul>
       <p>No other outbound network connections are made by the app.</p>
 
-      <h2>3. Photos</h2>
-      <p>If you use the Accuracy Tracking feature, Lumed may request access to your camera or photo library to capture or select an image of your watch face. Photos are processed entirely on-device and are never uploaded or transmitted anywhere.</p>
-      <p>Watch photos you add to your collection are stored locally in the app's data container on your device.</p>
+      <h2>4. Photos</h2>
+      <p>If you use the Accuracy Tracking feature, Lumed may request access to your camera or photo library to capture or select an image of your watch face. Photos are processed entirely on-device.</p>
+      <p>Watch photos you add to your collection are stored locally in the app's data container and, if iCloud sync is enabled, are included in the data synced to your own private iCloud database. They are never uploaded to any server operated by us.</p>
 
-      <h2>4. Analytics & Advertising</h2>
+      <h2>5. Analytics & Advertising</h2>
       <p>Lumed contains <strong>no analytics, no advertising SDKs, and no third-party tracking</strong> of any kind.</p>
 
-      <h2>5. Data Import</h2>
-      <p>Lumed supports importing collection data from WristCheck-compatible files. Imported data is loaded directly into your local database and is never transmitted externally.</p>
+      <h2>6. Data Import</h2>
+      <p>Lumed supports importing collection data from WristCheck-compatible files. Imported data is loaded directly into your local database and is never transmitted to us.</p>
 
-      <h2>6. Data Sharing</h2>
+      <h2>7. Data Sharing</h2>
       <p>We do not sell, rent, share, or disclose your data to any third party — because we never receive it in the first place.</p>
 
-      <h2>7. Data Retention & Deletion</h2>
-      <p>All app data lives on your device. You can delete it at any time by removing the app from your iPhone. When you delete Lumed, all associated data is permanently removed by iOS.</p>
+      <h2>8. Data Retention & Deletion</h2>
+      <p>App data lives on your device and, if iCloud sync is enabled, in your private iCloud database. You can delete it at any time by removing the app from your iPhone. To also remove the synced copy, you can delete Lumed's data from iCloud in <em>Settings → [your name] → iCloud → Manage Account Storage</em>. We do not retain any copy of your data because we never receive it.</p>
 
-      <h2>8. Children's Privacy</h2>
+      <h2>9. Children's Privacy</h2>
       <p>Lumed does not knowingly collect information from children under 13. Because the app collects no personal data at all, it poses no additional risk to younger users beyond standard App Store age guidelines.</p>
 
-      <h2>9. Changes to This Policy</h2>
+      <h2>10. Changes to This Policy</h2>
       <p>If we update this policy, the revised version will be posted at this URL with an updated date. We will not notify users of changes via the app because no contact information is held.</p>
 
-      <h2>10. Contact</h2>
+      <h2>11. Contact</h2>
       <p>Questions about this policy? Reach out at <a href="mailto:support@lumedapp.com">support@lumedapp.com</a>.</p>
 
       <hr class="privacy-divider" />
@@ -146,6 +158,12 @@
     </a>
     <p>Built for watch people, by watch people.</p>
   </footer>
+
+  <!-- Material FAB -->
+  <a class="fab" href="https://apps.apple.com/app/lumed/id6760083365" target="_blank" aria-label="Download on the App Store">
+    <span class="material-symbols-rounded">download</span>
+    Get the App
+  </a>
 
 </body>
 
