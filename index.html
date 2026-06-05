@@ -3,259 +3,301 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lumed — Your Watch Companion</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lumed — Built for Watch Collectors</title>
   <meta name="description"
-    content="Track your collection, log daily wear, measure accuracy, and sync time precisely. Lumed is the watch companion app for enthusiasts." />
-  <link rel="icon" type="image/png" href="ios_icon.png" />
+    content="Track your collection, log wear, measure real-world accuracy, and set every watch to atomic time. Lumed is the watch companion app for collectors." />
+  <link rel="icon" href="ios_icon.png" />
   <link rel="apple-touch-icon" href="ios_icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0..1,-25..200"
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
   <script defer src="https://analytics.811mapleton.com/script.js" data-website-id="62f9f6af-6ff3-4386-992d-caa601763c4b"
     data-domains="lumedapp.com">
     </script>
+
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
-  <!-- NAV -->
   <nav>
-    <a class="nav-logo" href="#">
-      <div class="nav-logo-icon"><img src="lumed_icon_2.svg" alt="Lumed icon" /></div>
-      <span class="nav-logo-wordmark">Lumed</span>
-    </a>
-    <div class="nav-links">
-      <a class="nav-link nav-link-active" href="index.html">Home</a>
-      <a class="nav-link" href="collection-builder.html">Collection Builder</a>
+    <div class="container nav-inner">
+      <a class="logo" href="#">
+        <img src="lumed_icon.svg" alt="" />
+        <span>Lumed</span>
+      </a>
+      <div class="nav-links">
+        <a href="#collect">Collect</a>
+        <a href="#wear">Wear</a>
+        <a href="#measure">Measure</a>
+        <a href="#auto-identify">Chronometer</a>
+        <a href="#sync">Sync</a>
+      </div>
+      <a class="nav-cta" href="https://apps.apple.com/app/lumed/id6760083365" target="_blank"
+        aria-label="Download Lumed on the App Store">
+        <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83"
+          alt="Download on the App Store" />
+      </a>
     </div>
-    <a class="nav-cta" href="https://apps.apple.com/app/lumed/id6760083365" target="_blank">Download</a>
   </nav>
 
   <main>
 
     <!-- HERO -->
     <section class="hero">
-      <div class="container">
-
-        <div class="hero-app-icon">
-          <img src="ios_icon.png" alt="Lumed app icon" />
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <h1>Your modern watch<span class="accent"> companion.</span></h1>
+          <p class="hero-sub">
+            Track your collection, log wear, measure real-world accuracy, and set every watch to atomic time.
+          </p>
+          <div class="hero-actions">
+            <a class="app-store-badge" href="https://apps.apple.com/app/lumed/id6760083365" target="_blank"
+              aria-label="Download Lumed on the App Store">
+              <img
+                src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83"
+                alt="Download on the App Store" />
+            </a>
+            <a class="btn-secondary" href="#collect">
+              See how it works
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </a>
+          </div>
         </div>
+        <div class="hero-device">
+          <div class="device-frame">
+            <div class="device-screen">
+              <img src="screenshots/watch-box.png" alt="Lumed Watch Box" onerror="this.style.display='none'" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <h1 class="hero-h1">Your modern <br />watch companion.</h1>
-        <p class="hero-sub">
-          Lumed is a companion app for watch enthusiasts. Track your collection, log daily wear, measure accuracy, and
-          sync time precisely — all in one place.
+    <!-- METRICS STRIP -->
+    <section class="metrics">
+      <div class="container metrics-grid">
+        <div class="metric">
+          <div class="metric-icon" aria-hidden="true">
+            <img src="icons/wrist-watch.png" alt="" />
+          </div>
+          <span class="metric-value">Any watch</span>
+          <span class="metric-label">Mechanical, quartz, GMT, vintage</span>
+        </div>
+        <div class="metric">
+          <div class="metric-icon" aria-hidden="true">
+            <img src="icons/accuracy.png" alt="" />
+          </div>
+          <span class="metric-value">±1 ms</span>
+          <span class="metric-label">NTP-synchronized atomic time</span>
+        </div>
+        <div class="metric">
+          <div class="metric-icon" aria-hidden="true">
+            <img src="icons/calendar.png" alt="" />
+          </div>
+
+          <span class="metric-value">Daily log</span>
+          <span class="metric-label">Every wrist day recorded</span>
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <!-- COLLECT -->
+    <section id="collect" class="feature">
+      <div class="container feature-grid">
+        <div class="feature-copy">
+          <div class="eyebrow">Collection</div>
+          <h2>Your watch box, organized.</h2>
+          <p>
+            Store photos, references, movement details, purchase history, service records, and notes.
+          </p>
+          <p>
+            Sort by brand, most worn, newest additions, or favorites. Everything where you'd expect it.
+          </p>
+          <a class="feature-callout" href="collection-builder.html" style="text-decoration:none;">
+            <div class="fc-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 5v14M5 12h14"/>
+              </svg>
+            </div>
+            <p>
+              <strong>Get a head start.</strong> Use the <span class="accent" style="font-weight:600;">Collection Builder</span> to add your watches on the web, save the file to iCloud, and import it into Lumed in one tap once installed.
+            </p>
+          </a>
+        </div>
+        <div class="feature-media">
+          <div class="device-frame">
+            <div class="device-screen">
+              <img src="screenshots/collection.png" alt="Collection view" onerror="this.style.display='none'" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WEAR -->
+    <section id="wear" class="feature alt">
+      <div class="container feature-grid reverse">
+        <div class="feature-copy">
+          <div class="eyebrow">Wear Tracking</div>
+          <h2>Discover what actually gets wrist time.</h2>
+          <p>
+            Log every watch you wear. Understand your collection through real usage instead of assumptions.
+          </p>
+          <p>
+            Surface neglected watches, favorites, and long-term trends across 30 days, 90 days, or all time.
+          </p>
+        </div>
+        <div class="feature-media">
+          <div class="device-frame">
+            <div class="device-screen">
+              <img src="screenshots/wear-log.png" alt="Wear log" onerror="this.style.display='none'" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MEASURE -->
+    <section id="measure" class="feature">
+      <div class="container feature-grid">
+        <div class="feature-copy">
+          <div class="eyebrow">Accuracy</div>
+          <h2>Know exactly how your watch is performing.</h2>
+          <p>
+            Take a photo of your watch. Lumed compares it against atomic time, calculates drift, and tracks performance
+            over weeks.
+          </p>
+          <p>
+            COSC, METAS, Rolex Superlative, or your own spec. No spreadsheet required.
+          </p>
+        </div>
+        <div class="feature-media">
+          <div class="drift-card" role="img" aria-label="Average drift +1.4 seconds per day, in spec">
+            <div class="drift-hero">
+              <span class="drift-num">+1.4</span>
+              <span class="drift-unit">s/day</span>
+            </div>
+            <div class="drift-cap">Average Drift Rate</div>
+
+            <div class="drift-divider"></div>
+
+            <div class="gauge-wrap">
+              <div class="gauge-track">
+                <div class="gauge-spec"></div>
+                <div class="gauge-zero"></div>
+                <div class="gauge-limit gauge-limit-loss"></div>
+                <div class="gauge-limit gauge-limit-gain"></div>
+                <div class="gauge-mark"></div>
+              </div>
+              <div class="gauge-lbls">
+                <span class="gauge-lbl" style="left:24%">−4s</span>
+                <span class="gauge-lbl" style="left:50%">0</span>
+                <span class="gauge-lbl" style="left:84%">+6s</span>
+              </div>
+            </div>
+
+            <div class="spec-badge">
+              <img src="icons/check-badge.svg" alt="" height="18" />
+              <span>In Spec</span>
+            </div>
+            <div class="spec-name">
+              <img src="icons/ribbon.svg" alt="" height="20" />
+              <span>COSC Certified&nbsp;&nbsp;(−4 / +6 s/day)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AUTO-IDENTIFY (Chronometer) -->
+    <section id="auto-identify" class="feature alt">
+      <div class="container feature-grid reverse">
+        <div class="feature-copy">
+          <div class="eyebrow">Auto-Identify</div>
+          <h2>One photo. Identified, logged, measured.</h2>
+          <p>
+            Snap a single photo and
+            Lumed recognizes which watch from your collection you're wearing, logs the wear, and calculates accuracy
+            against atomic time — all in one step.
+          </p>
+          <p>
+            No tapping to pick the right watch. No separate accuracy flow. Just point, shoot, and let Lumed handle the
+            rest.
+          </p>
+          <div class="feature-callout">
+            <div class="fc-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M5 12l5 5L20 7" />
+              </svg>
+            </div>
+            <p><strong>Included with Lumed Chronometer.</strong> The one time purchase that turns every wrist-check into
+              a
+              complete record.</p>
+          </div>
+        </div>
+        <div class="feature-media">
+          <div class="device-frame">
+            <div class="device-screen">
+              <img src="screenshots/auto-identify.png" alt="Auto-identify in action"
+                onerror="this.style.display='none'" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PREMIUM / NTP -->
+    <section id="sync" class="premium">
+      <div class="container">
+        <div class="clock-stack">
+          <div class="clock-face" aria-hidden="true">
+            <div class="clock-marker major" style="transform: rotate(0deg)"></div>
+            <div class="clock-marker" style="transform: rotate(30deg)"></div>
+            <div class="clock-marker" style="transform: rotate(60deg)"></div>
+            <div class="clock-marker major" style="transform: rotate(90deg)"></div>
+            <div class="clock-marker" style="transform: rotate(120deg)"></div>
+            <div class="clock-marker" style="transform: rotate(150deg)"></div>
+            <div class="clock-marker major" style="transform: rotate(180deg)"></div>
+            <div class="clock-marker" style="transform: rotate(210deg)"></div>
+            <div class="clock-marker" style="transform: rotate(240deg)"></div>
+            <div class="clock-marker major" style="transform: rotate(270deg)"></div>
+            <div class="clock-marker" style="transform: rotate(300deg)"></div>
+            <div class="clock-marker" style="transform: rotate(330deg)"></div>
+            <div class="hand hand-hour" id="handHour"></div>
+            <div class="hand hand-min" id="handMin"></div>
+            <div class="hand hand-sec" id="handSec"></div>
+            <div class="clock-center"></div>
+          </div>
+        </div>
+        <div class="eyebrow" style="margin-top:64px">NIST NTP Synchronized</div>
+        <h2>Set every watch to the same <span class="accent">source of truth.</span></h2>
+        <p>
+          Lumed synchronizes against NTP and provides a millisecond-accurate reference clock. Whether you're setting a
+          vintage Speedmaster or a COSC-certified diver, you start from the same precise baseline.
         </p>
+      </div>
+    </section>
 
-        <div class="hero-actions">
+    <!-- CTA -->
+    <section class="cta">
+      <div class="container">
+        <h2>Spreadsheet-level data, built for <span class="accent">effortless</span> daily tracking.</h2>
+        <p>Download Lumed and start building a better record of your collection.</p>
+        <div class="cta-actions">
           <a class="app-store-badge" href="https://apps.apple.com/app/lumed/id6760083365" target="_blank"
             aria-label="Download Lumed on the App Store">
             <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83"
               alt="Download on the App Store" />
           </a>
-          <a class="btn-secondary" href="#beta">
-            Join the Beta
-            <span class="material-symbols-rounded" style="font-size:18px;">arrow_downward</span>
-          </a>
-        </div>
 
-        <p class="hero-platforms">iPhone &amp; iOS 17+</p>
-      </div>
-    </section>
-
-    <!-- FEATURES -->
-    <section class="features-section" id="features">
-      <div class="container">
-        <p class="section-eyebrow">What's inside</p>
-        <h2 class="section-title">Everything a collector needs</h2>
-        <p class="section-sub">Focused tools built around how watch enthusiasts actually think about their pieces.
-        </p>
-
-        <div class="features-grid">
-
-          <!-- Watch Box -->
-          <div class="feature-card">
-            <div class="feature-icon-wrap tint-blue">
-              <span class="material-symbols-rounded filled">watch</span>
-            </div>
-            <h3>Watch Box</h3>
-            <p>Your full collection in a clean grid. Add photos, reference numbers, case details, and notes. Sort by
-              brand, most worn, or recently added. Favorites always float to the top. </p>
-          </div>
-
-          <!-- Wear Log -->
-          <div class="feature-card">
-            <div class="feature-icon-wrap tint-green">
-              <span class="material-symbols-rounded">event_available</span>
-            </div>
-            <h3>Wear Log</h3>
-            <p>Record which watch you wore each day, with optional occasion notes. Wear multiple watches in one
-              day — Lumed tracks them all.</p>
-          </div>
-          <!-- Accuracy -->
-          <div class="feature-card">
-            <div class="feature-icon-wrap tint-purple">
-              <span class="material-symbols-rounded">timer</span>
-            </div>
-            <h3>Accuracy Tracking</h3>
-            <p>From a single photograph of your watch face, Lumed will compare the time on your watch to NTP and
-              calculate daily drift
-              in a matter of seconds. Track whether it's gaining or losing over time and whether it's time to re-set.
-            </p>
-          </div>
-          <!-- Stats -->
-          <div class="feature-card">
-            <div class="feature-icon-wrap tint-orange">
-              <span class="material-symbols-rounded">bar_chart</span>
-            </div>
-            <h3>Stats</h3>
-            <p>See your collection at a glance — most worn pieces, neglected watches, and monthly activity across 30
-              days, 90 days, or
-              all time. Know which watch needs a wrist day and which one is a clear favorite.</p>
-          </div>
-
-          <!-- Time Sync -->
-          <div class="feature-card">
-            <div class="feature-icon-wrap tint-teal">
-              <span class="material-symbols-rounded">schedule</span>
-            </div>
-            <h3>Time Sync</h3>
-            <p>A live, NTP-synced clock accurate to the millisecond allows you to set your watch with guaranteed
-              precision. Add world
-              time zones to set your GMT complication easily.</p>
-          </div>
-
-
-          <!-- Movement Specs -->
-          <div class="feature-card">
-            <div class="feature-icon-wrap tint-red">
-              <span class="material-symbols-rounded">settings</span>
-            </div>
-            <h3>Movement Specs</h3>
-            <p>Define each watch's movement specs to measure accuracy compared to expectations. COSC, METAS, Rolex
-              Superlative, and other common movement types are default or add custom specs.</p>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ACCURACY HIGHLIGHT (original) -->
-    <section class="highlight-section">
-      <div class="container">
-        <div class="highlight-card">
-          <div class="highlight-text">
-
-            <p class="section-eyebrow">NTP-synced precision</p>
-            <h2>Atomic-accurate time on your wrist</h2>
-            <p>Lumed syncs directly with NIST time servers via NTP, giving you a reference clock accurate to the
-              millisecond. Set your watch to true atomic time — no guessing, no drift from your phone's clock.
-              Every measurement in Lumed is anchored to this source of truth.
-            </p>
-          </div>
-          <div class="highlight-visual">
-            <div class="clock-face">
-              <!-- Hour markers -->
-              <div class="clock-marker major" style="transform: rotate(0deg)"></div>
-              <div class="clock-marker" style="transform: rotate(30deg)"></div>
-              <div class="clock-marker" style="transform: rotate(60deg)"></div>
-              <div class="clock-marker major" style="transform: rotate(90deg)"></div>
-              <div class="clock-marker" style="transform: rotate(120deg)"></div>
-              <div class="clock-marker" style="transform: rotate(150deg)"></div>
-              <div class="clock-marker major" style="transform: rotate(180deg)"></div>
-              <div class="clock-marker" style="transform: rotate(210deg)"></div>
-              <div class="clock-marker" style="transform: rotate(240deg)"></div>
-              <div class="clock-marker major" style="transform: rotate(270deg)"></div>
-              <div class="clock-marker" style="transform: rotate(300deg)"></div>
-              <div class="clock-marker" style="transform: rotate(330deg)"></div>
-              <div class="hand hand-hour" id="handHour"></div>
-              <div class="hand hand-min" id="handMin"></div>
-              <div class="hand hand-sec" id="handSec"></div>
-              <div class="clock-center"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- NIST TIME SYNC HIGHLIGHT -->
-    <section class="highlight-section">
-      <div class="container">
-        <div class="highlight-card highlight-card-reverse">
-          <div class="highlight-text">
-            <p class="section-eyebrow">Photo-based measurement</p>
-            <h2>Know your drift, down to the second</h2>
-            <p>Beyond a professional timegrapher, the best way to track your watch's accuracy is through real wear
-              checkpoints. Lumed
-              will help you determine any time drift and does the math for you - just take a photo, verify the current
-              time, and see
-              how well your watch is running. Outputs are relative to your defined specification and Lumed will remind
-              you to reset
-              the baseline depending on the power reserve of your watch.
-            </p>
-
-          </div>
-          <div class="highlight-visual drift-card-wrap">
-            <div class="drift-card">
-              <div class="drift-hero-number">
-                <span class="drift-value">+1.4</span>
-                <span class="drift-unit">s/day</span>
-              </div>
-              <div class="drift-label">Average Drift Rate</div>
-
-              <div class="drift-divider"></div>
-
-              <div class="drift-gauge">
-                <div class="drift-gauge-track">
-                  <div class="drift-gauge-spec"></div>
-                  <div class="drift-gauge-center"></div>
-                  <div class="drift-gauge-limit drift-gauge-limit-loss"></div>
-                  <div class="drift-gauge-limit drift-gauge-limit-gain"></div>
-                  <div class="drift-gauge-marker"></div>
-                </div>
-                <div class="drift-gauge-labels">
-                  <span class="drift-gauge-lbl" style="left: 24%">&minus;4s</span>
-                  <span class="drift-gauge-lbl" style="left: 50%">0</span>
-                  <span class="drift-gauge-lbl" style="left: 84%">+6s</span>
-                </div>
-              </div>
-
-              <div class="drift-spec-badge in-spec">
-                <img src="icons/check-badge.svg" height="16px"></img>
-                <span>In Spec</span>
-              </div>
-              <div class="drift-spec-name">
-                <img src="icons/ribbon.svg" height="18px"></img>
-                <span>COSC Certified &nbsp;(&minus;4 / +6 s/day)</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- BETA CTA -->
-    <section class="beta-section" id="beta">
-      <div class="container">
-        <div class="beta-card">
-          <div class="hero-app-icon" style="margin-left:auto;margin-right:auto;">
-            <img src="ios_icon.png" alt="Lumed app icon" />
-          </div>
-          <h2>Join the Beta</h2>
-          <p>Lumed is live on the App Store — sign up to get early access to new features before they ship.</p>
-          <iframe name="formSink" style="display:none;"></iframe>
-          <form class="email-form" id="emailForm" method="GET"
-            action="https://n8n.811mapleton.com/webhook/b80fa1ab-77ea-40e2-a47f-e25a18f79997" target="formSink">
-            <input type="email" name="email" placeholder="you@example.com" required />
-            <button type="submit">I'm Interested</button>
-          </form>
-          <div id="emailFormMsg"></div>
-          <p class="beta-note">Not a newsletter. You'll only hear from us about beta access and early features.</p>
         </div>
       </div>
     </section>
@@ -263,56 +305,48 @@
   </main>
 
   <footer>
-    <a class="footer-logo" href="#">
-      <div class="footer-logo-icon"><img src="lumed_icon_2.svg" alt="Lumed icon" /></div>
-      Lumed
-    </a>
-    <p>Built by <a href="https://benwittbrodt.com" target="_blank"
-        style="color:var(--text-2);text-decoration:underline;text-underline-offset:3px;">Ben Wittbrodt</a>, a fellow
-      watch nerd.</p>
-    <p style="margin-top:8px;font-size:0.85rem;"><a href="privacy.html"
-        style="color:var(--text-3);text-decoration:none;">Privacy Policy</a></p>
+    <div class="container">
+      <div class="footer-logo">
+        <img src="lumed_icon.svg" alt="" />
+        <span>Lumed</span>
+      </div>
+      <p>Built by <a href="https://benwittbrodt.com" target="_blank">Ben Wittbrodt</a>, a fellow watch collector.</p>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy</a>
+        <a href="collection-builder.html">Collection Builder</a>
+        <a href="https://apps.apple.com/app/lumed/id6760083365" target="_blank">App Store</a>
+      </div>
+    </div>
   </footer>
 
-  <!-- Material FAB -->
-  <a class="fab" href="https://apps.apple.com/app/lumed/id6760083365" target="_blank"
-    aria-label="Download on the App Store">
-    <span class="material-symbols-rounded">download</span>
-    Get the App
-  </a>
-
   <script>
-    // Set clock hands to current time via negative animation-delay
+    // Analog clock — seed CSS animations with negative delay so hands start at the current time and continue ticking
     (function () {
       const now = new Date();
       const s = now.getSeconds();
       const m = now.getMinutes();
       const h = now.getHours() % 12;
 
-      const secEl = document.getElementById('handSec');
-      const minEl = document.getElementById('handMin');
-      const hourEl = document.getElementById('handHour');
-
-      if (secEl) secEl.style.animationDelay = `-${s}s`;
-      if (minEl) minEl.style.animationDelay = `-${m * 60 + s}s`;
-      if (hourEl) hourEl.style.animationDelay = `-${h * 3600 + m * 60 + s}s`;
+      const hH = document.getElementById('handHour');
+      const hM = document.getElementById('handMin');
+      const hS = document.getElementById('handSec');
+      if (hH) hH.style.animationDelay = `-${h * 3600 + m * 60 + s}s`;
+      if (hM) hM.style.animationDelay = `-${m * 60 + s}s`;
+      if (hS) hS.style.animationDelay = `-${s}s`;
     })();
-  </script>
 
-  <script>
-    // Email signup — show success after form submits into hidden iframe
-    document.getElementById('emailForm').addEventListener('submit', function () {
-      const form = this;
-      const btn = form.querySelector('button');
-      const msg = document.getElementById('emailFormMsg');
-      btn.disabled = true;
-      btn.textContent = 'Sending…';
-      // Give the form a moment to actually POST, then show success
-      setTimeout(function () {
-        form.style.display = 'none';
-        msg.innerHTML = '<p class="email-form-success">You\'re on the list! We\'ll be in touch.</p>';
-      }, 1000);
-    });
+    // Digital readout — refresh at ~6.67 Hz (every 150 ms) to match the analog second-hand cadence
+    (function () {
+      const el = document.getElementById('liveClock');
+      if (!el) return;
+      const pad = (n, w) => String(n).padStart(w, '0');
+      function tick() {
+        const d = new Date();
+        el.innerHTML = `${pad(d.getHours(), 2)}:${pad(d.getMinutes(), 2)}:${pad(d.getSeconds(), 2)}<span class="ms">.${pad(d.getMilliseconds(), 3)}</span>`;
+      }
+      tick();
+      setInterval(tick, 150);
+    })();
   </script>
 
 </body>

@@ -19,27 +19,28 @@
     .privacy-wrap {
       max-width: 720px;
       margin: 0 auto;
-      padding: 120px 24px 80px;
-      position: relative;
-      z-index: 1;
+      padding: 96px 24px 80px;
     }
 
     .privacy-wrap h1 {
-      font-size: 2.2rem;
+      font-size: clamp(36px, 4vw, 48px);
       font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
       margin-bottom: 8px;
       color: var(--text);
     }
 
     .privacy-meta {
-      color: var(--text-2);
-      font-size: 0.9rem;
+      color: var(--text-3);
+      font-size: 14px;
       margin-bottom: 48px;
     }
 
     .privacy-wrap h2 {
-      font-size: 1.1rem;
+      font-size: 19px;
       font-weight: 600;
+      letter-spacing: -0.015em;
       color: var(--text);
       margin: 40px 0 10px;
     }
@@ -47,8 +48,8 @@
     .privacy-wrap p,
     .privacy-wrap li {
       color: var(--text-2);
-      font-size: 0.97rem;
-      line-height: 1.75;
+      font-size: 16px;
+      line-height: 1.7;
     }
 
     .privacy-wrap ul {
@@ -61,17 +62,18 @@
     }
 
     .privacy-wrap a {
-      color: var(--accent-light);
+      color: var(--accent);
       text-decoration: none;
     }
 
     .privacy-wrap a:hover {
       text-decoration: underline;
+      text-underline-offset: 3px;
     }
 
     .privacy-divider {
       border: none;
-      border-top: 1px solid var(--card-border);
+      border-top: 1px solid var(--border);
       margin: 40px 0;
     }
   </style>
@@ -81,15 +83,21 @@
 
   <!-- NAV -->
   <nav>
-    <a class="nav-logo" href="index.html">
-      <div class="nav-logo-icon"><img src="lumed_icon_2.svg" alt="Lumed icon" /></div>
-      <span class="nav-logo-wordmark">Lumed</span>
-    </a>
-    <div class="nav-links">
-      <a class="nav-link" href="index.html">Home</a>
-      <a class="nav-link" href="collection-builder.html">Collection Builder</a>
+    <div class="container nav-inner">
+      <a class="logo" href="index.html">
+        <img src="lumed_icon.svg" alt="" />
+        <span>Lumed</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="collection-builder.html">Collection Builder</a>
+      </div>
+      <a class="nav-cta" href="https://apps.apple.com/app/lumed/id6760083365" target="_blank"
+        aria-label="Download Lumed on the App Store">
+        <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83"
+          alt="Download on the App Store" />
+      </a>
     </div>
-    <a class="nav-cta" href="index.html#beta">Get Updates</a>
   </nav>
 
   <main>
@@ -97,82 +105,115 @@
       <h1>Privacy Policy</h1>
       <p class="privacy-meta">Last updated: June 2, 2026</p>
 
-      <p>Lumed is a watch collection management app for iOS, with an optional web companion. This policy covers the Lumed iOS app, the marketing website at <a href="https://lumedapp.com">lumedapp.com</a>, and the web companion at <a href="https://lumed.app">lumed.app</a>. The short version: <strong>Lumed collects no personal data. Your collection is stored on your device and, if you are signed in to iCloud, synced privately to your own iCloud account. We use only anonymous, self-hosted, cookie-less analytics to count pageviews and feature usage.</strong></p>
+      <p>Lumed is a watch collection management app for iOS, with an optional web companion. This policy covers the
+        Lumed iOS app, the marketing website at <a href="https://lumedapp.com">lumedapp.com</a>, and the web companion
+        at <a href="https://lumed.app">lumed.app</a>. The short version: <strong>Lumed collects no personal data. Your
+          collection is stored on your device and, if you are signed in to iCloud, synced privately to your own iCloud
+          account. We use only anonymous, self-hosted, cookie-less analytics to count pageviews and feature
+          usage.</strong></p>
 
       <hr class="privacy-divider" />
 
       <h2>1. Data We Collect</h2>
-      <p>Lumed collects <strong>no personal information</strong>. The app does not require an account with us, does not send data to any server we operate, and does not track you in any way.</p>
-      <p>All data you enter into Lumed — watch details, wear log entries, accuracy measurements, photos, and settings — is stored <strong>locally on your device</strong> using Apple's SwiftData framework and a shared app group container accessible only by Lumed and its widget extension.</p>
+      <p>Lumed collects <strong>no personal information</strong>. The app does not require an account with us, does not
+        send data to any server we operate, and does not track you in any way.</p>
+      <p>All data you enter into Lumed — watch details, wear log entries, accuracy measurements, photos, and settings —
+        is stored <strong>locally on your device</strong> using Apple's SwiftData framework and a shared app group
+        container accessible only by Lumed and its widget extension.</p>
 
       <h2>2. iCloud Sync</h2>
-      <p>If you are signed in to iCloud on your device, Lumed uses Apple's <strong>CloudKit</strong> framework to sync your collection to your own private iCloud database. This allows your data to stay consistent across your Apple devices and to be restored if you reinstall the app.</p>
+      <p>If you are signed in to iCloud on your device, Lumed uses Apple's <strong>CloudKit</strong> framework to sync
+        your collection to your own private iCloud database. This allows your data to stay consistent across your Apple
+        devices and to be restored if you reinstall the app.</p>
       <ul>
         <li>Data syncs to <strong>your personal iCloud account</strong>, not to any server operated by us.</li>
-        <li>We have <strong>no access</strong> to data stored in your private CloudKit database — only you and Apple do.</li>
-        <li>Sync is handled entirely by Apple and is governed by the <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple Privacy Policy</a> and iCloud terms.</li>
-        <li>If you sign out of iCloud or disable iCloud for Lumed in iOS Settings, the app continues to work using on-device storage only.</li>
+        <li>We have <strong>no access</strong> to data stored in your private CloudKit database — only you and Apple do.
+        </li>
+        <li>Sync is handled entirely by Apple and is governed by the <a href="https://www.apple.com/legal/privacy/"
+            target="_blank" rel="noopener">Apple Privacy Policy</a> and iCloud terms.</li>
+        <li>If you sign out of iCloud or disable iCloud for Lumed in iOS Settings, the app continues to work using
+          on-device storage only.</li>
       </ul>
 
       <h2>3. Network Access</h2>
       <p>Beyond iCloud sync, Lumed connects to the internet for one purpose:</p>
       <ul>
-        <li><strong>NTP time synchronization</strong> — Lumed queries publicly available time servers (e.g. <code>time.apple.com</code>, <code>time.nist.gov</code>) to display an accurate reference clock and calculate watch drift. No personal data is sent in these requests; they are standard, anonymous time-protocol queries.</li>
+        <li><strong>NTP time synchronization</strong> — Lumed queries publicly available time servers (e.g.
+          <code>time.apple.com</code>, <code>time.nist.gov</code>) to display an accurate reference clock and calculate
+          watch drift. No personal data is sent in these requests; they are standard, anonymous time-protocol queries.
+        </li>
       </ul>
       <p>No other outbound network connections are made by the app.</p>
 
       <h2>4. Photos</h2>
-      <p>If you use the Accuracy Tracking feature, Lumed may request access to your camera or photo library to capture or select an image of your watch face. Photos are processed entirely on-device.</p>
-      <p>Watch photos you add to your collection are stored locally in the app's data container and, if iCloud sync is enabled, are included in the data synced to your own private iCloud database. They are never uploaded to any server operated by us.</p>
+      <p>If you use the Accuracy Tracking feature, Lumed may request access to your camera or photo library to capture
+        or select an image of your watch face. Photos are processed entirely on-device.</p>
+      <p>Watch photos you add to your collection are stored locally in the app's data container and, if iCloud sync is
+        enabled, are included in the data synced to your own private iCloud database. They are never uploaded to any
+        server operated by us.</p>
 
       <h2>5. Analytics & Advertising</h2>
-      <p>The Lumed iOS app contains <strong>no analytics, no advertising SDKs, and no third-party tracking</strong> of any kind.</p>
-      <p>The marketing website (<a href="https://lumedapp.com">lumedapp.com</a>) and the web companion (<a href="https://lumed.app">lumed.app</a>) use <strong>Umami</strong>, a privacy-respecting analytics tool that we self-host on our own server. Umami:</p>
+      <p>The Lumed iOS app contains <strong>no analytics, no advertising SDKs, and no third-party tracking</strong> of
+        any kind.</p>
+      <p>The marketing website (<a href="https://lumedapp.com">lumedapp.com</a>) and the web companion (<a
+          href="https://lumed.app">lumed.app</a>) use <strong>Umami</strong>, a privacy-respecting analytics tool that
+        we self-host on our own server. Umami:</p>
       <ul>
         <li>Does <strong>not</strong> use cookies or any persistent client-side identifiers.</li>
-        <li>Does <strong>not</strong> collect personal information, IP addresses (beyond a short-lived hash used only to estimate unique visitors per day), or any data about your watch collection.</li>
+        <li>Does <strong>not</strong> collect personal information, IP addresses (beyond a short-lived hash used only to
+          estimate unique visitors per day), or any data about your watch collection.</li>
         <li>Does <strong>not</strong> track you across other websites.</li>
-        <li>Records only anonymous, aggregated pageviews and feature-usage events (for example: that a user signed in to the web companion, or used the wishlist) so we can understand which features are useful.</li>
+        <li>Records only anonymous, aggregated pageviews and feature-usage events (for example: that a user signed in to
+          the web companion, or used the wishlist) so we can understand which features are useful.</li>
         <li>Stores its data on a server we operate. Nothing is shared with Umami's developers or any third party.</li>
       </ul>
       <p>There are no advertising SDKs, marketing pixels, or third-party trackers on any Lumed property.</p>
 
       <h2>6. Data Import</h2>
-      <p>Lumed supports importing collection data from WristCheck-compatible files. Imported data is loaded directly into your local database and is never transmitted to us.</p>
+      <p>Lumed supports importing collection data from WristCheck-compatible files. Imported data is loaded directly
+        into your local database and is never transmitted to us.</p>
 
       <h2>7. Data Sharing</h2>
-      <p>We do not sell, rent, share, or disclose your data to any third party — because we never receive it in the first place.</p>
+      <p>We do not sell, rent, share, or disclose your data to any third party — because we never receive it in the
+        first place.</p>
 
       <h2>8. Data Retention & Deletion</h2>
-      <p>App data lives on your device and, if iCloud sync is enabled, in your private iCloud database. You can delete it at any time by removing the app from your iPhone. To also remove the synced copy, you can delete Lumed's data from iCloud in <em>Settings → [your name] → iCloud → Manage Account Storage</em>. We do not retain any copy of your data because we never receive it.</p>
+      <p>App data lives on your device and, if iCloud sync is enabled, in your private iCloud database. You can delete
+        it at any time by removing the app from your iPhone. To also remove the synced copy, you can delete Lumed's data
+        from iCloud in <em>Settings → [your name] → iCloud → Manage Account Storage</em>. We do not retain any copy of
+        your data because we never receive it.</p>
 
       <h2>9. Children's Privacy</h2>
-      <p>Lumed does not knowingly collect information from children under 13. Because the app collects no personal data at all, it poses no additional risk to younger users beyond standard App Store age guidelines.</p>
+      <p>Lumed does not knowingly collect information from children under 13. Because the app collects no personal data
+        at all, it poses no additional risk to younger users beyond standard App Store age guidelines.</p>
 
       <h2>10. Changes to This Policy</h2>
-      <p>If we update this policy, the revised version will be posted at this URL with an updated date. We will not notify users of changes via the app because no contact information is held.</p>
+      <p>If we update this policy, the revised version will be posted at this URL with an updated date. We will not
+        notify users of changes via the app because no contact information is held.</p>
 
       <h2>11. Contact</h2>
       <p>Questions about this policy? Reach out at <a href="mailto:support@lumedapp.com">support@lumedapp.com</a>.</p>
 
       <hr class="privacy-divider" />
-      <p style="font-size:0.85rem; color: var(--text-3);">Lumed is an independent app. Apple Inc. is not responsible for the content of this privacy policy.</p>
+      <p style="font-size:0.85rem; color: var(--text-3);">Lumed is an independent app. Apple Inc. is not responsible for
+        the content of this privacy policy.</p>
     </div>
   </main>
 
   <footer>
-    <a class="footer-logo" href="index.html">
-      <div class="footer-logo-icon"><img src="lumed_icon_2.svg" alt="Lumed icon" /></div>
-      Lumed
-    </a>
-    <p>Built for watch people, by watch people.</p>
+    <div class="container">
+      <a class="footer-logo" href="index.html">
+        <img src="lumed_icon.svg" alt="" />
+        <span>Lumed</span>
+      </a>
+      <p>Built by <a href="https://benwittbrodt.com" target="_blank">Ben Wittbrodt</a>, a fellow watch collector.</p>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="collection-builder.html">Collection Builder</a>
+        <a href="https://apps.apple.com/app/lumed/id6760083365" target="_blank">App Store</a>
+      </div>
+    </div>
   </footer>
-
-  <!-- Material FAB -->
-  <a class="fab" href="https://apps.apple.com/app/lumed/id6760083365" target="_blank" aria-label="Download on the App Store">
-    <span class="material-symbols-rounded">download</span>
-    Get the App
-  </a>
 
 </body>
 
