@@ -272,7 +272,7 @@ nav {
   padding: 8px 24px;
 }
 
-.metric + .metric::before {
+.metric+.metric::before {
   content: '';
   position: absolute;
   left: 0;
@@ -335,10 +335,13 @@ nav {
 }
 
 @keyframes metricPulse {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 1;
     transform: scale(1);
   }
+
   50% {
     opacity: 0.4;
     transform: scale(0.85);
@@ -361,7 +364,7 @@ nav {
   align-items: center;
 }
 
-.feature-grid.reverse > :first-child {
+.feature-grid.reverse> :first-child {
   order: 2;
 }
 
@@ -459,7 +462,7 @@ nav {
   letter-spacing: -0.011em;
 }
 
-.feature p + p {
+.feature p+p {
   margin-top: 16px;
 }
 
@@ -586,10 +589,11 @@ footer a:hover {
   position: relative;
   margin: 0 auto;
   box-shadow:
-    0 0 60px rgba(47, 134, 255, 0.18),
-    inset 0 0 40px rgba(15, 30, 50, 0.05),
-    0 20px 50px rgba(15, 30, 50, 0.12);
+    0 0 60px rgba(255, 255, 255, 0.7)inset,
+    0 0 40px rgba(15, 30, 50, 0.10),
+    0 20px 50px rgba(15, 30, 50, 0.04);
 }
+
 
 .clock-face::before {
   content: '';
@@ -700,9 +704,12 @@ footer a:hover {
 }
 
 @keyframes clockPulse {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0.35;
   }
@@ -898,7 +905,7 @@ footer a:hover {
     gap: 56px;
   }
 
-  .feature-grid.reverse > :first-child {
+  .feature-grid.reverse> :first-child {
     order: 0;
   }
 
@@ -908,7 +915,7 @@ footer a:hover {
     padding: 36px 0;
   }
 
-  .metric + .metric::before {
+  .metric+.metric::before {
     display: none;
   }
 
