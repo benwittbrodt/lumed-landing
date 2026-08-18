@@ -103,7 +103,7 @@
   <main>
     <div class="privacy-wrap">
       <h1>Privacy Policy</h1>
-      <p class="privacy-meta">Last updated: June 2, 2026</p>
+      <p class="privacy-meta">Last updated: August 17, 2026</p>
 
       <p>Lumed is a watch collection management app for iOS, with an optional web companion. This policy covers the
         Lumed iOS app, the marketing website at <a href="https://lumedapp.com">lumedapp.com</a>, and the web companion
@@ -112,11 +112,17 @@
           account. We use only anonymous, self-hosted, cookie-less analytics to count pageviews and feature
           usage.</strong></p>
 
+      <p>There is one exception, and it only happens when you ask for it: the optional <strong>AI Detail-fill</strong>
+        feature sends the product link or search text you type to our import server so it can look up the watch. It is
+        described in full in <a href="#ai-detail-fill">section 4</a>. Nothing else about your collection — no watch
+        records, photos, wear history, or settings — is ever sent to us.</p>
+
       <hr class="privacy-divider" />
 
       <h2>1. Data We Collect</h2>
-      <p>Lumed collects <strong>no personal information</strong>. The app does not require an account with us, does not
-        send data to any server we operate, and does not track you in any way.</p>
+      <p>Lumed collects <strong>no personal information</strong>. The app does not require an account with us and does
+        not track you in any way. The only data that ever reaches a server we operate is what you type into AI
+        Detail-fill, described in <a href="#ai-detail-fill">section 4</a>.</p>
       <p>All data you enter into Lumed — watch details, wear log entries, accuracy measurements, photos, and settings —
         is stored <strong>locally on your device</strong> using Apple's SwiftData framework and a shared app group
         container accessible only by Lumed and its widget extension.</p>
@@ -136,23 +142,48 @@
       </ul>
 
       <h2>3. Network Access</h2>
-      <p>Beyond iCloud sync, Lumed connects to the internet for one purpose:</p>
+      <p>Beyond iCloud sync, Lumed connects to the internet for two purposes:</p>
       <ul>
         <li><strong>NTP time synchronization</strong> — Lumed queries publicly available time servers (e.g.
           <code>time.apple.com</code>, <code>time.nist.gov</code>) to display an accurate reference clock and calculate
           watch drift. No personal data is sent in these requests; they are standard, anonymous time-protocol queries.
         </li>
+        <li><strong>AI Detail-fill</strong> — only when you tap Auto-fill while adding a watch. See
+          <a href="#ai-detail-fill">section 4</a>.</li>
       </ul>
       <p>No other outbound network connections are made by the app.</p>
 
-      <h2>4. Photos</h2>
+      <h2 id="ai-detail-fill">4. AI Detail-fill (Chronometer)</h2>
+      <p>AI Detail-fill is an optional feature for Chronometer purchasers. When adding a watch, you can paste a product
+        link or type a brand and model, and Lumed fills in the specifications for you. It runs <strong>only when you tap
+          Auto-fill</strong> — it is never triggered in the background, and the rest of the app works without it.</p>
+      <p>When you use it, the app sends the following to our import server:</p>
+      <ul>
+        <li><strong>The text you typed</strong> — the product URL or the brand and model you are searching for.</li>
+        <li><strong>A random identifier</strong> generated on your device when you first launch Lumed. It is not derived
+          from your name, email, Apple ID, or any device identifier, and it tells us nothing about who you are. It
+          exists so we can confirm the request comes from a Chronometer purchaser and apply a per-user daily limit.</li>
+        <li><strong>Your App Store purchase receipt for Chronometer</strong>, signed by Apple, which our server verifies
+          to confirm the purchase. It is checked and discarded, never stored.</li>
+      </ul>
+      <p>Our server passes your search text to <strong>Anthropic's Claude API</strong>, which may perform a web search
+        to find the specifications, and returns the result to your device. Anthropic processes it under their own
+        <a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">privacy policy</a>. If a
+        product image is found, your device downloads it directly from the source website.</p>
+      <p><strong>What we keep:</strong> the random identifier, together with a count of how many requests it has made
+        today, so the daily limit can be enforced. If a request is rejected, the identifier is written to our server log.
+        We do <strong>not</strong> store the text you searched for, the results returned, or any image. Nothing from
+        your collection is sent with the request.</p>
+      <p>If you never tap Auto-fill, none of this happens, and no data leaves your device for our servers at all.</p>
+
+      <h2>5. Photos</h2>
       <p>If you use the Accuracy Tracking feature, Lumed may request access to your camera or photo library to capture
         or select an image of your watch face. Photos are processed entirely on-device.</p>
       <p>Watch photos you add to your collection are stored locally in the app's data container and, if iCloud sync is
         enabled, are included in the data synced to your own private iCloud database. They are never uploaded to any
         server operated by us.</p>
 
-      <h2>5. Analytics & Advertising</h2>
+      <h2>6. Analytics &amp; Advertising</h2>
       <p>The Lumed iOS app contains <strong>no analytics, no advertising SDKs, and no third-party tracking</strong> of
         any kind.</p>
       <p>The marketing website (<a href="https://lumedapp.com">lumedapp.com</a>) and the web companion (<a
@@ -169,28 +200,36 @@
       </ul>
       <p>There are no advertising SDKs, marketing pixels, or third-party trackers on any Lumed property.</p>
 
-      <h2>6. Data Import & Export</h2>
+      <h2>7. Data Import &amp; Export</h2>
       <p>Lumed lets you export your collection to a <code>.lumedbackup</code> file (a JSON archive of your watches, wear log, accuracy measurements, and photos) and restore from that file at any time. Exports are saved through the standard iOS share sheet — they are never uploaded to us. Imports are read directly from your device's Files app into your local database.</p>
 
-      <h2>7. Data Sharing</h2>
-      <p>We do not sell, rent, share, or disclose your data to any third party — because we never receive it in the
-        first place.</p>
+      <h2>8. Data Sharing</h2>
+      <p>We do not sell, rent, or trade your data to anyone, and we do not share it with advertisers, data brokers, or
+        analytics companies.</p>
+      <p>The only third party that ever receives anything is <strong>Anthropic</strong>, which processes AI Detail-fill
+        searches on our behalf as described in <a href="#ai-detail-fill">section 4</a>. That is limited to the text you
+        type into that one field, and only when you use it.</p>
 
-      <h2>8. Data Retention & Deletion</h2>
+      <h2>9. Data Retention &amp; Deletion</h2>
       <p>App data lives on your device and, if iCloud sync is enabled, in your private iCloud database. You can delete
         it at any time by removing the app from your iPhone. To also remove the synced copy, you can delete Lumed's data
-        from iCloud in <em>Settings → [your name] → iCloud → Manage Account Storage</em>. We do not retain any copy of
-        your data because we never receive it.</p>
+        from iCloud in <em>Settings → [your name] → iCloud → Manage Account Storage</em>. We hold no copy of your
+        collection, because we never receive it.</p>
+      <p>The one thing we do hold is the random AI Detail-fill identifier and its daily request count, described in
+        <a href="#ai-detail-fill">section 4</a>. Request counts reset daily. Because that identifier is not linked to
+        your name, email, or Apple ID, we cannot look you up by it — but if you would like it cleared, email us and we
+        will remove it. Deleting and reinstalling the app also generates a new one, abandoning the old.</p>
 
-      <h2>9. Children's Privacy</h2>
-      <p>Lumed does not knowingly collect information from children under 13. Because the app collects no personal data
-        at all, it poses no additional risk to younger users beyond standard App Store age guidelines.</p>
+      <h2>10. Children's Privacy</h2>
+      <p>Lumed does not knowingly collect information from children under 13. The app collects no personal information
+        from users of any age — the only data it transmits is what you deliberately type into AI Detail-fill — so it
+        poses no additional risk to younger users beyond standard App Store age guidelines.</p>
 
-      <h2>10. Changes to This Policy</h2>
+      <h2>11. Changes to This Policy</h2>
       <p>If we update this policy, the revised version will be posted at this URL with an updated date. We will not
         notify users of changes via the app because no contact information is held.</p>
 
-      <h2>11. Contact</h2>
+      <h2>12. Contact</h2>
       <p>Questions about this policy? Reach out at <a href="mailto:support@lumedapp.com">support@lumedapp.com</a>.</p>
 
       <hr class="privacy-divider" />
